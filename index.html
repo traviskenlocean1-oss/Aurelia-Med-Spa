@@ -84,6 +84,8 @@
   .menu-list > li{position:relative;padding:24px 0 26px 20%;border-bottom:.8px solid rgb(184,184,184);overflow:hidden}
   .menu-list > li::before{counter-increment:menu-counter;content:"(" counter(menu-counter) ") ";position:absolute;transform:translateX(calc(-100% - 5px)) translateY(-5px);font-family:Manrope,sans-serif;font-size:14px;color:rgb(39,39,39)}
   .menu-list > li > a,.menu-list > li > button{display:flex;align-items:center;gap:30px;font:200 50px/34px 'Poppins',sans-serif;color:rgb(39,39,39);background:none;border:0;padding:0;cursor:pointer;text-align:left}
+  .menu-list a:focus,.menu-list button:focus{outline:none}
+  .menu-list a:focus-visible,.menu-list button:focus-visible{outline:1px solid rgb(39,39,39);outline-offset:6px}
   .menu-list .chev{width:23px;height:13px;margin-top:.2em;transition:transform .2s;transform-origin:center}
   .menu-list button[aria-expanded="true"] .chev{transform:rotate(180deg)}
   .sub-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s}
@@ -92,12 +94,15 @@
   .sub-menu li{margin-bottom:16px;padding-left:8px}
   .sub-menu li:first-child{margin-top:24px}
   .sub-menu a{font:200 18px/20px 'Poppins',sans-serif;color:rgb(51,55,61)}
-  .menu-side{background:url('assets/img/menu-side.jpg') center/cover no-repeat;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
+  /* Photo: Dominique Rivas on Unsplash */
+  .menu-side{background:url('assets/img/menu-side.jpg') center 30%/cover no-repeat;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
 
   @media (max-width:1024px){
     .menu-list > li{padding-left:10%}
     .menu-list > li > a,.menu-list > li > button{gap:18px}
-    .menu-list .chev{width:20px;height:11px}
+    .menu-list a:focus,.menu-list button:focus{outline:none}
+  .menu-list a:focus-visible,.menu-list button:focus-visible{outline:1px solid rgb(39,39,39);outline-offset:6px}
+  .menu-list .chev{width:20px;height:11px}
   }
   @media (max-width:767px){
     .menu{grid-template-columns:1fr}
