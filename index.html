@@ -119,6 +119,67 @@
     .about-title span{font-size:40px;line-height:60px}
   }
 
+  /* ── Treatments: pinned background, steps swap on scroll (measured from
+     the reference: 5400px track = 5 x 100vh, steps change at 0.85/2.05/
+     3.25 viewport heights, then a closing CTA block 796px tall) ── */
+  .treat{position:relative;background:#1c1512;color:#fff}
+  .treat-bg{position:sticky;top:0;height:100vh;height:100svh;margin-bottom:-100vh;margin-bottom:-100svh;overflow:hidden;z-index:0}
+  .treat-bg video,.treat-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .treat-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,21,18,.62),rgba(28,21,18,.5) 50%,rgba(28,21,18,.66))}
+  .treat-inner{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 var(--gutter);box-sizing:content-box}
+  .treat-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;height:500vh}
+  .treat-left{position:sticky;top:0;height:100vh;display:flex;align-items:center;padding-left:56px}
+  .treat-left-copy{position:relative;width:100%}
+  .treat-blob{position:absolute;border:1px solid #fff;width:100%;left:-60%;top:50%;border-radius:40% 60% 70% 30% / 40% 40% 60% 50%;transform:translateY(-60%);aspect-ratio:1/0.9;opacity:.2;pointer-events:none}
+  .treat-title{font-weight:200;font-size:109px;line-height:98.1px}
+  .treat-title span{display:block;font-size:50px;line-height:98.1px}
+  .treat-kicker{margin-top:-4px;font-size:26px;font-weight:300;line-height:34.06px}
+  .treat-text{margin-top:24px;max-width:456px;font-size:14px;font-weight:300;line-height:21.98px;letter-spacing:.21px;color:rgb(184,184,184)}
+  .treat-steps{position:sticky;top:0;height:100vh;counter-reset:step-counter}
+  .treat-step{position:absolute;inset:0 56px;display:flex;align-items:center;opacity:0;pointer-events:none}
+  .treat-step.is-active{pointer-events:auto}
+  .treat-step-content{width:420px;margin-left:84px}
+  .treat-step h3{position:relative;font-weight:200;font-size:64px;line-height:64px}
+  .treat-step h3::before{counter-increment:step-counter;content:"(" counter(step-counter) ")";font-size:14px;color:rgb(184,184,184);position:absolute;right:calc(100% + 1em);top:-1em;line-height:1}
+  .treat-step p{margin-top:24px;font-size:14px;font-weight:300;line-height:27.02px;letter-spacing:.21px}
+  .btn-outline-light{display:inline-flex;align-items:center;height:48px;margin-top:24px;padding:12px 24px;border:.8px solid #fff;border-radius:1000px;font-size:14px;font-weight:300;letter-spacing:.21px;line-height:22px;transition:background-color .3s ease,color .3s ease}
+  .btn-outline-light:hover{background:#fff;color:rgb(39,39,39)}
+  .treat-line{position:absolute;top:0;right:49px;width:1px;height:100%;background:rgba(255,255,255,.5);z-index:2;pointer-events:none}
+  .treat-dots{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;width:32px}
+  .treat-dots-wrap{position:absolute;top:0;right:34px;height:500vh;z-index:3;width:32px}
+  .treat-dot{width:32px;height:32px;border-radius:100vmax;border:1px solid #fff;opacity:.5;display:flex;justify-content:center;align-items:center;transform:scale(.5);transition:.2s;background:transparent;cursor:pointer;padding:0}
+  .treat-dot span{width:10px;height:10px;background:#fff;border-radius:100vmax;opacity:0;transition:.2s}
+  .treat-dot.is-active{opacity:1;transform:scale(1)}
+  .treat-dot.is-active span{opacity:1}
+  .treat-end{position:relative;min-height:796px;padding-top:150px;text-align:center}
+  .treat-end h2{max-width:1164px;margin:0 auto;font-weight:200;font-size:109px;line-height:98.1px}
+  .treat-end p{max-width:604px;margin:16px auto 0;font-size:14px;font-weight:300;line-height:21.98px;letter-spacing:.21px;color:rgb(184,184,184)}
+  .treat-end .blob-btn{position:relative;right:auto;bottom:auto;margin:40px auto 0}
+  .treat-end .blob{border-color:#fff}
+  .blur-in{opacity:0;filter:blur(12px);transform:translateY(20px)}
+  .opacity-in{opacity:0}
+
+  @media (max-width:1200px){
+    .treat-line{right:17px}
+    .treat-dots-wrap{right:2px}
+    .treat-dot{width:23px;height:23px}
+    .treat-dot span{width:8px;height:8px}
+  }
+  @media (max-width:1024px){
+    .treat-grid{display:block;height:auto}
+    .treat-left,.treat-steps{position:static;height:auto;padding:100px 0 40px}
+    .treat-step{position:static;opacity:1 !important;transform:none !important;inset:auto;padding:40px 0;pointer-events:auto}
+    .treat-step-content{margin-left:1.5rem;width:auto}
+    .treat-step h3::before{right:calc(100% + .5em);top:-.5em}
+    .treat-dots-wrap,.treat-line,.treat-blob{display:none}
+    .treat-end h2{font-size:clamp(56px,9vw,109px);line-height:.9em}
+  }
+  @media (max-width:767px){
+    .treat-title{font-size:80px;line-height:72px}
+    .treat-title span{font-size:40px;line-height:60px}
+    .treat-step h3{font-size:44px;line-height:46px}
+  }
+
   /* ── Full-screen menu (measured from the reference at 1920×1080) ── */
   .menu{position:fixed;inset:0;z-index:40;display:grid;grid-template-columns:55.54% 1fr;background:rgb(241,233,230);clip-path:polygon(0% 0%,100% 0%,100% 0%,0% 0%);visibility:hidden}
   .menu-list-wrap{display:flex;align-items:center;min-height:100%;overflow-y:auto}
@@ -278,6 +339,69 @@
       </div>
     </div>
   </section>
+
+  <section class="treat" id="treatments" aria-labelledby="treat-title">
+    <div class="treat-bg" aria-hidden="true">
+      <img src="assets/img/treatments-bg.jpg" alt="" />
+      <video muted playsinline loop preload="none" data-src="assets/video/treatments-bg.mp4"></video>
+    </div>
+    <span class="treat-line" aria-hidden="true"></span>
+    <div class="treat-dots-wrap" aria-hidden="true">
+      <div class="treat-dots">
+        <button class="treat-dot is-active" tabindex="-1"><span></span></button>
+        <button class="treat-dot" tabindex="-1"><span></span></button>
+        <button class="treat-dot" tabindex="-1"><span></span></button>
+        <button class="treat-dot" tabindex="-1"><span></span></button>
+      </div>
+    </div>
+    <div class="treat-inner">
+      <div class="treat-grid">
+        <div class="treat-left">
+          <div class="treat-left-copy">
+            <span class="treat-blob" aria-hidden="true"></span>
+            <h2 class="treat-title blur-in" id="treat-title"><span>The</span>touch</h2>
+            <p class="treat-kicker opacity-in">Treatments</p>
+            <p class="treat-text opacity-in">Our treatment menu blends medical precision with true relaxation, from quick touch-ups between meetings to restorative rituals for skin and body. Everything is focused on helping you look and feel your best.</p>
+          </div>
+        </div>
+        <div class="treat-steps">
+          <div class="treat-step is-active">
+            <div class="treat-step-content">
+              <h3>Botox &amp; Fillers</h3>
+              <p>Soften fine lines and restore natural volume with precise, conservative injections from our licensed nurse injectors, always tailored to your features.</p>
+              <a href="#book" class="btn-outline-light">View more</a>
+            </div>
+          </div>
+          <div class="treat-step">
+            <div class="treat-step-content">
+              <h3>Facials &amp; Peels</h3>
+              <p>From hydrating HydraFacials to resurfacing peels and microneedling, our medical-grade facials leave your skin clearer, smoother and visibly brighter, with results you can see after one visit and that build over a series.</p>
+              <a href="#book" class="btn-outline-light">View more</a>
+            </div>
+          </div>
+          <div class="treat-step">
+            <div class="treat-step-content">
+              <h3>Laser &amp; Body</h3>
+              <p>Laser hair removal, skin tightening and non-surgical body sculpting to refine and firm, with no downtime.</p>
+              <a href="#book" class="btn-outline-light">View more</a>
+            </div>
+          </div>
+          <div class="treat-step">
+            <div class="treat-step-content">
+              <h3>IV Therapy</h3>
+              <p>Restore hydration, energy and glow from the inside out. Our vitamin infusions are customized to you and administered in a private lounge while you unwind.</p>
+              <a href="#book" class="btn-outline-light">View more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="treat-end">
+        <h2 class="blur-in">Begin your golden hour</h2>
+        <p class="opacity-in">Step away from the noise and back into yourself. Book your visit and let our team take care of the rest at Aurelia Med Spa.</p>
+        <a href="#book" class="blob-btn opacity-in">Book Now<span class="blob blob-2" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -299,7 +423,7 @@
   }
 
   /* Blob button: slow rotation + organic morph, like the reference */
-  var blob = document.querySelector('.blob');
+  var blob = document.querySelectorAll('.blob');
   if (!reduce) {
     gsap.to(blob, { rotation: 360, duration: 9, ease: 'none', repeat: -1 });
     (function morph() {
@@ -362,6 +486,74 @@
       clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'sine.inOut',
       scrollTrigger: { trigger: el, start: 'top 85%', once: true }
     });
+  });
+
+  /* Treatments: steps swap at fixed scroll thresholds (in viewport
+     heights, sampled from the reference); old step lifts out 50px,
+     new one rises in from 50px below. Background video only plays while
+     the section is on screen. */
+  (function () {
+    var section = document.querySelector('.treat');
+    var steps = gsap.utils.toArray('.treat-step');
+    var dots = gsap.utils.toArray('.treat-dot');
+    var bgVideo = section.querySelector('.treat-bg video');
+    var current = 0;
+    gsap.set(steps, { opacity: 0, y: 50 });
+    gsap.set(steps[0], { opacity: 1, y: 0 });
+    function show(i) {
+      if (i === current) return;
+      var dir = i > current ? 1 : -1;
+      steps.forEach(function (st, k) {
+        if (k === i) {
+          gsap.fromTo(st, { opacity: 0, y: 50 * dir }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', overwrite: true });
+          st.classList.add('is-active');
+        } else if (k === current) {
+          gsap.to(st, { opacity: 0, y: -50 * dir, duration: 0.35, ease: 'power2.out', overwrite: true });
+          st.classList.remove('is-active');
+        }
+      });
+      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === Math.min(i, 3)); });
+      current = i;
+    }
+    ScrollTrigger.create({
+      trigger: '.treat-grid', start: 'top top', end: 'bottom top',
+      onUpdate: function (self) {
+        var vh = window.innerHeight;
+        var y = self.progress * (self.end - self.start);
+        var i = y < 0.85 * vh ? 0 : y < 2.05 * vh ? 1 : y < 3.25 * vh ? 2 : y < 4.45 * vh ? 3 : 4;
+        if (i === 4) { if (current !== 4) { gsap.to(steps[current], { opacity: 0, y: -50, duration: 0.35, overwrite: true }); steps[current].classList.remove('is-active'); current = 4; } return; }
+        if (current === 4) { current = -1; steps.forEach(function (st) { gsap.set(st, { opacity: 0 }); }); }
+        show(i);
+      }
+    });
+    if (window.innerWidth > 1024) {
+      dots.forEach(function (d, k) {
+        d.addEventListener('click', function () {
+          var top = section.querySelector('.treat-grid').getBoundingClientRect().top + window.scrollY;
+          var target = top + [0.2, 1.4, 2.6, 3.8][k] * window.innerHeight;
+          if (window.lenis) window.lenis.scrollTo(target); else window.scrollTo({ top: target, behavior: 'smooth' });
+        });
+      });
+    }
+    ScrollTrigger.create({
+      trigger: section, start: 'top bottom', end: 'bottom top',
+      onToggle: function (self) {
+        if (!bgVideo.src) bgVideo.src = bgVideo.dataset.src;
+        if (self.isActive) bgVideo.play().catch(function () {}); else bgVideo.pause();
+      }
+    });
+  })();
+
+  /* Blur-in titles / fade-in copy as they enter */
+  gsap.utils.toArray('.blur-in').forEach(function (el) {
+    if (reduce) { gsap.set(el, { opacity: 1, filter: 'none', y: 0 }); return; }
+    gsap.to(el, { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1.4, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
+  });
+  gsap.utils.toArray('.opacity-in').forEach(function (el) {
+    if (reduce) { gsap.set(el, { opacity: 1 }); return; }
+    gsap.to(el, { opacity: 1, duration: 1.2, delay: 0.3, ease: 'power1.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
   });
 
   /* Hero video: fetched whole as a blob (CF Workers ignores Range
