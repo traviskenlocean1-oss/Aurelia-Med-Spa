@@ -86,8 +86,9 @@
   .menu-list > li > a,.menu-list > li > button{display:flex;align-items:center;gap:30px;font:200 50px/34px 'Poppins',sans-serif;color:rgb(39,39,39);background:none;border:0;padding:0;cursor:pointer;text-align:left}
   .menu-list .chev{width:23px;height:13px;margin-top:.2em;transition:transform .2s;transform-origin:center}
   .menu-list button[aria-expanded="true"] .chev{transform:rotate(180deg)}
-  .sub-menu{list-style:none;max-height:0;overflow:hidden;transition:max-height .4s}
-  .sub-menu.open{max-height:240px}
+  .sub-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s}
+  .sub-wrap.open{grid-template-rows:1fr}
+  .sub-menu{list-style:none;min-height:0;overflow:hidden}
   .sub-menu li{margin-bottom:16px;padding-left:8px}
   .sub-menu li:first-child{margin-top:24px}
   .sub-menu a{font:200 18px/20px 'Poppins',sans-serif;color:rgb(51,55,61)}
@@ -184,13 +185,13 @@
         <button type="button" aria-expanded="false" aria-controls="sub-treatments">Treatments
           <svg class="chev" viewBox="0 0 23 13" aria-hidden="true"><path d="M.5.5 11.5 12 22.5.5" fill="none" stroke="#272727" stroke-width="1" /></svg>
         </button>
-        <ul class="sub-menu" id="sub-treatments">
+        <div class="sub-wrap" id="sub-treatments"><ul class="sub-menu">
           <li><a href="#treatments">Botox &amp; Fillers</a></li>
           <li><a href="#treatments">Facials &amp; Peels</a></li>
           <li><a href="#treatments">Laser Treatments</a></li>
           <li><a href="#treatments">Body Sculpting</a></li>
           <li><a href="#treatments">IV Therapy</a></li>
-        </ul>
+        </ul></div>
       </li>
       <li><a href="#gift">Gift Cards</a></li>
       <li><a href="#book">Book</a></li>
