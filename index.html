@@ -77,6 +77,48 @@
   .menu-open .logo .logo-light{opacity:0;transition-delay:.35s}
   .menu-open .site-header::after{opacity:0;transition:opacity .3s}
 
+  /* ── Header once the hero is passed (reference: cream bar, dark ink) ── */
+  .site-header{transition:background-color .5s ease}
+  .site-header .btn-pill,.site-header .header-divider{transition:background-color .5s ease,color .5s ease,border-color .5s ease}
+  .burger .ico-lines line{transition:stroke .5s ease}
+  .is-scrolled .site-header{background:rgb(241,233,230)}
+  .is-scrolled .site-header::after{opacity:0}
+  .is-scrolled .logo .logo-light{opacity:0}
+  .is-scrolled .logo .logo-dark{opacity:1}
+  .is-scrolled .btn-pill{background:transparent;color:rgb(39,39,39);border-color:rgb(39,39,39)}
+  .is-scrolled .header-divider{background:rgb(39,39,39)}
+  .is-scrolled .burger .ico-lines line{stroke:rgb(39,39,39)}
+  .is-scrolled .burger .ico-x rect{fill:#fcfcfc}
+
+  /* ── About (measured from the reference at 1920 and 1512 wide) ── */
+  .about{position:relative;background:rgb(241,233,230);color:rgb(39,39,39);padding:0 var(--gutter)}
+  .about-inner{position:relative;max-width:1400px;margin:0 auto;min-height:1547px}
+  .about-big{position:absolute;left:0;top:393px;width:50%;aspect-ratio:700/915}
+  .about-col{position:absolute;left:67.3%;top:243px;width:32.7%}
+  .about-small{width:338px;max-width:100%;aspect-ratio:338/411}
+  .about-big img,.about-small img{display:block;width:100%;height:100%;object-fit:cover}
+  .about-title{margin-top:100px;font-weight:200;font-size:109px;line-height:98.1px}
+  .about-title span{display:block;font-size:50px;line-height:98.1px}
+  .about-kicker{margin-top:-16px;font-size:26px;font-weight:300;line-height:34.06px}
+  .about-text{margin-top:24px;max-width:456px;font-size:14px;font-weight:300;line-height:21.98px;letter-spacing:.21px}
+  .btn-outline{display:inline-flex;align-items:center;height:48px;margin-top:32px;padding:12px 24px;border:.8px solid rgb(112,112,112);border-radius:1000px;font-size:14px;font-weight:300;letter-spacing:.21px;line-height:22px;transition:background-color .3s ease,color .3s ease}
+  .btn-outline:hover{background:rgb(39,39,39);color:rgb(241,233,230)}
+
+  /* Image reveal (mechanism from wearedirect.co): the frame wipes open
+     top-to-bottom once its top edge crosses ~80% of the viewport. */
+  .wipe{clip-path:inset(0 0 100% 0)}
+
+  @media (max-width:1024px){
+    .about-inner{min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:120px 0}
+    .about-big,.about-col{position:static;width:auto}
+  }
+  @media (max-width:767px){
+    .about-inner{grid-template-columns:1fr;padding:80px 0}
+    .about-small{display:none}
+    .about-title{margin-top:0;font-size:80px;line-height:72px}
+    .about-title span{font-size:40px;line-height:60px}
+  }
+
   /* ── Full-screen menu (measured from the reference at 1920×1080) ── */
   .menu{position:fixed;inset:0;z-index:40;display:grid;grid-template-columns:55.54% 1fr;background:rgb(241,233,230);clip-path:polygon(0% 0%,100% 0%,100% 0%,0% 0%);visibility:hidden}
   .menu-list-wrap{display:flex;align-items:center;min-height:100%;overflow-y:auto}
@@ -94,7 +136,7 @@
   .sub-menu li{margin-bottom:16px;padding-left:8px}
   .sub-menu li:first-child{margin-top:24px}
   .sub-menu a{font:200 18px/20px 'Poppins',sans-serif;color:rgb(51,55,61)}
-  /* Photo: Dominique Rivas on Unsplash */
+  /* Photos (Unsplash): menu - Dominique Rivas; about - WAm_HaI4W2E, a_T6h19JC6U */
   .menu-side{background:url('assets/img/menu-facial.jpg') center 30%/cover no-repeat;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
 
   @media (max-width:1024px){
@@ -223,6 +265,19 @@
       <a href="#book" class="blob-btn reveal d4" id="book">Book Now<span class="blob" aria-hidden="true"></span></a>
     </div>
   </section>
+
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="about-inner">
+      <figure class="about-big wipe"><img src="assets/img/about-hands.jpg" alt="Calming facial massage in warm candlelight at Aurelia Med Spa" loading="lazy" width="700" height="915" /></figure>
+      <div class="about-col">
+        <figure class="about-small wipe"><img src="assets/img/about-candles.jpg" alt="Candlelit treatment room detail" loading="lazy" width="338" height="411" /></figure>
+        <h2 class="about-title" id="about-title"><span>The</span>ritual</h2>
+        <p class="about-kicker">1. About us</p>
+        <p class="about-text">At Aurelia Med Spa, we believe great skin is quiet confidence. Our licensed injectors and aestheticians pair medical-grade treatments with a calm, private setting in the heart of Miami, so every visit feels less like an appointment and more like a pause. From your first consultation, we listen, plan with care, and deliver natural results that look like you, only more rested.</p>
+        <a href="#about" class="btn-outline">Meet us</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -290,6 +345,23 @@
     var open = subBtn.getAttribute('aria-expanded') !== 'true';
     subBtn.setAttribute('aria-expanded', open);
     document.getElementById('sub-treatments').classList.toggle('open', open);
+  });
+
+  /* Header switches to the cream bar once the pinned hero is done */
+  ScrollTrigger.create({
+    trigger: '.hero', start: 'bottom top+=84',
+    onEnter: function () { document.documentElement.classList.add('is-scrolled'); },
+    onLeaveBack: function () { document.documentElement.classList.remove('is-scrolled'); }
+  });
+
+  /* Top-down image wipes, triggered at 80% of the viewport (sampled from
+     wearedirect.co: ~0.8s, quick start, soft finish) */
+  gsap.utils.toArray('.wipe').forEach(function (el) {
+    if (reduce) { gsap.set(el, { clipPath: 'inset(0% 0% 0% 0%)' }); return; }
+    gsap.to(el, {
+      clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 80%', once: true }
+    });
   });
 
   /* Hero video: fetched whole as a blob (CF Workers ignores Range
