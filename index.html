@@ -355,12 +355,12 @@
   });
 
   /* Top-down image wipes, triggered at 80% of the viewport (sampled from
-     wearedirect.co: ~0.8s, quick start, soft finish) */
+     wearedirect.co, slowed per Travis: 1.6s, even sine glide) */
   gsap.utils.toArray('.wipe').forEach(function (el) {
     if (reduce) { gsap.set(el, { clipPath: 'inset(0% 0% 0% 0%)' }); return; }
     gsap.to(el, {
-      clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 80%', once: true }
+      clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'sine.inOut',
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true }
     });
   });
 
