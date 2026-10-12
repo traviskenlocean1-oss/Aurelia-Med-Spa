@@ -37,7 +37,7 @@
 <link rel="icon" href="/favicon.ico" sizes="48x48" /><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" /><link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400&family=Poppins:wght@200;300;400&display=swap" rel="stylesheet" />
 
 <style>
   :root{
@@ -63,6 +63,51 @@
   .header-divider{width:1px;height:18px;background:var(--white);margin:0 34px}
   .burger{display:block;width:93px;height:20px;margin-top:-6px;background:none;border:0;cursor:pointer;padding:0}
   .burger svg{display:block}
+
+  /* Burger <-> close icon (lines slide out right, X fades in) */
+  .burger{position:relative;overflow:hidden}
+  .burger .ico-lines{transition:transform .6s cubic-bezier(.65,0,.35,1)}
+  .burger .ico-x{position:absolute;right:calc(50% - 13.5px);top:-4px;width:27px;height:27px;opacity:0;transform:scale(.6);transition:opacity .4s ease,transform .6s cubic-bezier(.65,0,.35,1)}
+  .menu-open .burger .ico-lines{transform:translateX(100%)}
+  .menu-open .burger .ico-x{opacity:1;transform:none;transition-delay:.25s}
+  .logo{position:relative}
+  .logo .logo-dark{position:absolute;inset:0;opacity:0;transition:opacity .5s ease}
+  .logo .logo-light{transition:opacity .5s ease}
+  .menu-open .logo .logo-dark{opacity:1;transition-delay:.35s}
+  .menu-open .logo .logo-light{opacity:0;transition-delay:.35s}
+  .menu-open .site-header::after{opacity:0;transition:opacity .3s}
+
+  /* ── Full-screen menu (measured from the reference at 1920×1080) ── */
+  .menu{position:fixed;inset:0;z-index:40;display:grid;grid-template-columns:55.54% 1fr;background:rgb(241,233,230);clip-path:polygon(0% 0%,100% 0%,100% 0%,0% 0%);visibility:hidden}
+  .menu-list-wrap{display:flex;align-items:center;min-height:100%;overflow-y:auto}
+  .menu-list{list-style:none;width:100%;counter-reset:menu-counter}
+  .menu-list > li{position:relative;padding:24px 0 26px 20%;border-bottom:.8px solid rgb(184,184,184);overflow:hidden}
+  .menu-list > li::before{counter-increment:menu-counter;content:"(" counter(menu-counter) ") ";position:absolute;transform:translateX(calc(-100% - 5px)) translateY(-5px);font-family:Manrope,sans-serif;font-size:14px;color:rgb(39,39,39)}
+  .menu-list > li > a,.menu-list > li > button{display:flex;align-items:center;gap:30px;font:200 50px/34px 'Poppins',sans-serif;color:rgb(39,39,39);background:none;border:0;padding:0;cursor:pointer;text-align:left}
+  .menu-list .chev{width:23px;height:13px;margin-top:.2em;transition:transform .2s;transform-origin:center}
+  .menu-list button[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .sub-menu{list-style:none;max-height:0;overflow:hidden;transition:max-height .4s}
+  .sub-menu.open{max-height:240px}
+  .sub-menu li{margin-bottom:16px;padding-left:8px}
+  .sub-menu li:first-child{margin-top:24px}
+  .sub-menu a{font:200 18px/20px 'Poppins',sans-serif;color:rgb(51,55,61)}
+  .menu-side{background:url('assets/img/menu-side.jpg') center/cover no-repeat;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
+
+  @media (max-width:1024px){
+    .menu-list > li{padding-left:10%}
+    .menu-list > li > a,.menu-list > li > button{gap:18px}
+    .menu-list .chev{width:20px;height:11px}
+  }
+  @media (max-width:767px){
+    .menu{grid-template-columns:1fr}
+    .menu-side{display:none}
+    .menu-list-wrap{padding-top:100px}
+    .menu-list > li{padding-left:48px}
+    .menu-list > li > a,.menu-list > li > button{font-size:36px;line-height:28px}
+    .menu-open .burger .ico-x rect{fill:#272727}
+    .menu-open .btn-pill{background:rgba(39,39,39,.12);color:#272727}
+    .menu-open .header-divider{background:#272727}
+  }
 
   /* ── Hero: pinned while the sunlight scrubs in on scroll ── */
   .hero{position:relative;height:300vh}
@@ -117,18 +162,43 @@
 <body>
 
 <header class="site-header">
-  <a href="/" class="logo reveal" aria-label="Aurelia Med Spa home"><img src="assets/brand/logo-white.png" alt="Aurelia Med Spa" width="96" height="52" /></a>
+  <a href="/" class="logo reveal" aria-label="Aurelia Med Spa home"><img class="logo-light" src="assets/brand/logo-white.png" alt="Aurelia Med Spa" width="96" height="52" /><img class="logo-dark" src="assets/brand/logo-dark.png" alt="" aria-hidden="true" width="96" height="52" /></a>
   <div class="header-right reveal d1">
     <a href="#book" class="btn-pill">Book</a>
     <span class="header-divider" aria-hidden="true"></span>
-    <button class="burger" aria-label="Open menu">
-      <svg width="93" height="20" viewBox="0 0 93 10.92" preserveAspectRatio="none" aria-hidden="true">
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+      <svg class="ico-x" viewBox="0 0 24.4 24.4" aria-hidden="true"><rect x="0.6" y="0" width="33" height="1" transform="rotate(45 0.6 0)" fill="#fcfcfc" /><rect x="0" y="23.4" width="33" height="1" transform="rotate(-45 0 23.4)" fill="#fcfcfc" /></svg>
+      <svg class="ico-lines" width="93" height="20" viewBox="0 0 93 10.92" preserveAspectRatio="none" aria-hidden="true">
         <line x1="0" y1="0.5" x2="93" y2="0.5" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke" />
         <line x1="0" y1="10.42" x2="93" y2="10.42" stroke="#fff" stroke-width="1" vector-effect="non-scaling-stroke" />
       </svg>
     </button>
   </div>
 </header>
+
+<nav class="menu" id="site-menu" aria-label="Main menu">
+  <div class="menu-list-wrap">
+    <ul class="menu-list">
+      <li><a href="#about">About Us</a></li>
+      <li>
+        <button type="button" aria-expanded="false" aria-controls="sub-treatments">Treatments
+          <svg class="chev" viewBox="0 0 23 13" aria-hidden="true"><path d="M.5.5 11.5 12 22.5.5" fill="none" stroke="#272727" stroke-width="1" /></svg>
+        </button>
+        <ul class="sub-menu" id="sub-treatments">
+          <li><a href="#treatments">Botox &amp; Fillers</a></li>
+          <li><a href="#treatments">Facials &amp; Peels</a></li>
+          <li><a href="#treatments">Laser Treatments</a></li>
+          <li><a href="#treatments">Body Sculpting</a></li>
+          <li><a href="#treatments">IV Therapy</a></li>
+        </ul>
+      </li>
+      <li><a href="#gift">Gift Cards</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="menu-side" aria-hidden="true"></div>
+</nav>
 
 <main>
   <section class="hero" id="hero" aria-label="Aurelia Med Spa">
@@ -161,7 +231,7 @@
 
   /* Smooth scroll, wired into ScrollTrigger */
   if (!reduce) {
-    var lenis = new Lenis({ lerp: 0.09 });
+    var lenis = window.lenis = new Lenis({ lerp: 0.09 });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
     gsap.ticker.lagSmoothing(0);
@@ -179,6 +249,42 @@
       });
     })();
   }
+
+  /* Menu: cream panel wipes down from the top, side photo wipes up from
+     the bottom, then each row rises in, staggered (timings sampled from
+     the reference). Closing plays it back in reverse, a bit faster. */
+  var menu = document.getElementById('site-menu');
+  var burger = document.querySelector('.burger');
+  var rows = gsap.utils.toArray('.menu-list > li');
+  var rowLinks = rows.map(function (li) { return li.firstElementChild; });
+  gsap.set(rows, { opacity: 0 });
+  gsap.set(rowLinks, { y: 50 });
+  var menuTl = gsap.timeline({ paused: true,
+    onReverseComplete: function () { gsap.set(menu, { visibility: 'hidden' }); }
+  })
+    .set(menu, { visibility: 'visible' })
+    .to(menu, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', duration: 0.95, ease: 'power2.inOut' }, 0)
+    .to('.menu-side', { clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)', duration: 1.0, ease: 'power3.out' }, 0.45)
+    .to(rows, { opacity: 1, duration: 0.55, ease: 'power2.out', stagger: 0.12 }, 0.45)
+    .to(rowLinks, { y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.12 }, 0.45);
+
+  function setMenu(open) {
+    document.documentElement.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) { menuTl.timeScale(1).play(); if (window.lenis) window.lenis.stop(); }
+    else { menuTl.timeScale(1.6).reverse(); if (window.lenis) window.lenis.start(); }
+  }
+  burger.addEventListener('click', function () { setMenu(!document.documentElement.classList.contains('menu-open')); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.documentElement.classList.contains('menu-open')) setMenu(false); });
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  var subBtn = menu.querySelector('button[aria-controls="sub-treatments"]');
+  subBtn.addEventListener('click', function () {
+    var open = subBtn.getAttribute('aria-expanded') !== 'true';
+    subBtn.setAttribute('aria-expanded', open);
+    document.getElementById('sub-treatments').classList.toggle('open', open);
+  });
 
   /* Hero video: fetched whole as a blob (CF Workers ignores Range
      requests), play() called immediately for iOS, then scrubbed by
