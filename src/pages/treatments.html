@@ -1,0 +1,50 @@
+<!--{"title":"Treatments & Prices | Aurelia Med Spa Miami","desc":"Botox, dermal fillers, HydraFacial, chemical peels, microneedling, laser hair removal, IPL, body contouring and IV therapy at Aurelia Med Spa in Brickell, Miami. See options and prices.","file":"treatments.html","crumb":"Treatments","data":true,"team":true,"css":["cards"],"js":["cards"]}-->
+<style>
+  body.inner,html{background:#e6ddd5}
+  .j_ttl{padding-top:187px;background:#e6ddd5}
+  .j_ttl .h2{font:200 157px/157px 'Poppins',sans-serif;text-transform:uppercase;letter-spacing:-.035em}
+  .team{margin-top:0;background:#e6ddd5}
+  @media (max-width:1600px){
+    .j_ttl .h2{font-size:131px;line-height:115px}
+  }
+  @media (max-width:1100px){
+    .j_ttl .h2{font-size:96px;line-height:90px}
+  }
+  @media (max-width:767px){
+    .j_ttl{padding-top:130px}
+    .j_ttl .h2{font-size:52px;line-height:52px}
+  }
+</style>
+
+  <section class="j_ttl">
+    <div class="container"><h1 class="h2 t-split" data-start="0"><span class="ln">Treatments</span></h1></div>
+  </section>
+
+  <section class="svc" aria-label="Treatments and prices">
+    <div class="container">
+      <div class="cp_rows">
+        <div class="cp_cols01"><p>Choose</p><p>your treatment</p></div>
+        <div class="cp_cols02">
+          <div class="cp_r"><p class="t">Sort by</p>
+            <div class="f_rows" role="group" aria-label="Sort treatments">
+              <div class="f_cols"><button class="f_btn active" data-sort="featured" type="button">featured</button></div>
+              <div class="f_cols"><button class="f_btn" data-sort="price" type="button">price</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="cp_list" role="tablist" aria-label="Treatment categories"></ul>
+      <div class="cpt_rows"></div>
+    </div>
+  </section>
+
+{{team}}
+
+<script data-page>
+AureliaCards({
+  list: document.querySelector('.cp_list'), grid: document.querySelector('.cpt_rows'), useQuery: true,
+  sort: [].slice.call(document.querySelectorAll('.f_btn')),
+  primary: { label: 'Book now', href: function (t) { return 'book.html?t=' + t.slug; } },
+  secondary: { label: 'Read more', href: function (t) { return 'treatment.html?t=' + t.slug; } }
+});
+</script>

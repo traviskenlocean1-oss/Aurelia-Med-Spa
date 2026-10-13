@@ -29,7 +29,8 @@
   "logo": "https://aurelia-med-spa.traviskenlocean1.workers.dev/assets/brand/logo-white.png",
   "description": "Luxury medical spa offering Botox, fillers, facials, laser treatments and body sculpting.",
   "areaServed": { "@type": "City", "name": "Miami" },
-  "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US" },
+  "telephone": "+1-305-555-0142",
+  "address": { "@type": "PostalAddress", "streetAddress": "Brickell Avenue", "postalCode": "33131", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US" },
   "priceRange": "$$$"
 }
 </script>
@@ -621,14 +622,46 @@
     .f-rows p{font-size:13px;line-height:13px}
     .f-rows p:first-child{margin-bottom:8px}
   }
+
+  /* ── View more drawer (Ironclad's services popup, mirrored to slide in
+     from the left): dim overlay, drifting photo strip, copy + CTA ── */
+  button.btn-outline-light{background:none;color:#fff;font-family:inherit;cursor:pointer}
+  .drawer{position:fixed;inset:0;z-index:300;pointer-events:none}
+  .drawer-ovr{position:absolute;inset:0;background:rgba(28,21,18,.5);opacity:0}
+  .drawer-panel{position:absolute;top:0;left:0;bottom:0;width:min(480px,100vw);background:rgb(241,233,230);color:rgb(39,39,39);transform:translateX(-100%);overflow-y:auto;overscroll-behavior:contain}
+  .drawer-close{position:absolute;top:24px;right:24px;z-index:2;width:48px;height:48px;border-radius:50%;border:0;background:rgba(241,233,230,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s}
+  .drawer-close:hover{background:#fff}
+  .drawer-close svg{width:18px;height:18px}
+  .drawer-slider{position:relative;height:224px;overflow:hidden}
+  .drawer-track{display:flex;height:100%}
+  .drawer-track img{width:224px;height:224px;object-fit:cover;flex:none;display:block}
+  .drawer-body{padding:32px}
+  .drawer-num{font:400 14px/14px Manrope,sans-serif;color:#9a7b4f}
+  .drawer-h{font:200 44px/48px 'Poppins',sans-serif;margin-top:14px}
+  .drawer-copy{font:300 15px/24px 'Poppins',sans-serif;color:rgba(39,39,39,.75);margin-top:16px}
+  .drawer-list{list-style:none;margin-top:26px;border-top:.8px solid rgba(39,39,39,.2)}
+  .drawer-list a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:.8px solid rgba(39,39,39,.2);font:300 17px/22px 'Poppins',sans-serif;transition:color .3s,padding .3s}
+  .drawer-list a span{font:400 13px/13px Manrope,sans-serif;color:rgba(39,39,39,.6);white-space:nowrap}
+  .drawer-list a:hover{color:#9a7b4f;padding-left:6px}
+  .drawer-cta{display:inline-flex;align-items:center;height:48px;margin-top:28px;padding:0 26px;border-radius:1000px;background:rgb(39,39,39);color:rgb(241,233,230);font:300 14px/22px 'Poppins',sans-serif;letter-spacing:.21px;transition:background .3s}
+  .drawer-cta:hover{background:#9a7b4f}
+  .drawer-all{display:block;margin-top:18px;font:300 13px/13px 'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;text-decoration:underline;text-underline-offset:4px}
+  @media (max-width:480px){ .drawer-slider{height:168px} .drawer-track img{width:168px;height:168px} .drawer-body{padding:24px} .drawer-h{font-size:36px;line-height:40px} }
+  html,body{overflow-x:clip}
+  .pt{position:fixed;inset:0;z-index:400;background:rgb(241,233,230);pointer-events:none;opacity:1;animation:pt-fail .4s 3s forwards}
+  .pt img{position:absolute;left:50%;top:50%;width:150px;transform:translate(-50%,-50%);opacity:.9}
+  .pt-js .pt{animation:none}
+  html.pt-done .pt{opacity:0;visibility:hidden}
+  @keyframes pt-fail{to{opacity:0;visibility:hidden}}
 </style>
 </head>
 <body>
+<div class="pt" aria-hidden="true"><img src="assets/brand/logo-dark.png" alt="" width="96" height="52" /></div>
 
 <header class="site-header">
   <a href="/" class="logo reveal" aria-label="Aurelia Med Spa home"><img class="logo-light" src="assets/brand/logo-white.png" alt="Aurelia Med Spa" width="96" height="52" /><img class="logo-dark" src="assets/brand/logo-dark.png" alt="" aria-hidden="true" width="96" height="52" /></a>
   <div class="header-right reveal d1">
-    <a href="#book" class="btn-pill">Book</a>
+    <a href="book.html" class="btn-pill">Book</a>
     <span class="header-divider" aria-hidden="true"></span>
     <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
       <svg class="ico-x" viewBox="0 0 24.4 24.4" aria-hidden="true"><rect x="0.6" y="0" width="33" height="1" transform="rotate(45 0.6 0)" fill="#fcfcfc" /><rect x="0" y="23.4" width="33" height="1" transform="rotate(-45 0 23.4)" fill="#fcfcfc" /></svg>
@@ -643,22 +676,22 @@
 <nav class="menu" id="site-menu" aria-label="Main menu">
   <div class="menu-list-wrap">
     <ul class="menu-list">
-      <li><a href="#about">About Us</a></li>
+      <li><a href="about.html">About Us</a></li>
       <li>
         <button type="button" aria-expanded="false" aria-controls="sub-treatments">Treatments
           <svg class="chev" viewBox="0 0 23 13" aria-hidden="true"><path d="M.5.5 11.5 12 22.5.5" fill="none" stroke="#272727" stroke-width="1" /></svg>
         </button>
         <div class="sub-wrap" id="sub-treatments"><ul class="sub-menu">
-          <li><a href="#treatments">Botox &amp; Fillers</a></li>
-          <li><a href="#treatments">Facials &amp; Peels</a></li>
-          <li><a href="#treatments">Laser Treatments</a></li>
-          <li><a href="#treatments">Body Sculpting</a></li>
-          <li><a href="#treatments">IV Therapy</a></li>
+          <li><a href="treatments.html?c=injectables">Botox &amp; Fillers</a></li>
+          <li><a href="treatments.html?c=facials">Facials &amp; Peels</a></li>
+          <li><a href="treatments.html?c=laser">Laser Treatments</a></li>
+          <li><a href="treatments.html?c=laser">Body Sculpting</a></li>
+          <li><a href="treatments.html?c=iv">IV Therapy</a></li>
         </ul></div>
       </li>
-      <li><a href="#gift">Gift Cards</a></li>
-      <li><a href="#book">Book</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="gift-cards.html">Gift Cards</a></li>
+      <li><a href="book.html">Book</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
   <div class="menu-side" aria-hidden="true"></div>
@@ -678,7 +711,7 @@
 
       <p class="hero-tagline reveal d3">Restore your skin and spirit in our private sanctuary</p>
 
-      <a href="#book" class="blob-btn reveal d4" id="book">Book Now<span class="blob" aria-hidden="true"></span></a>
+      <a href="book.html" class="blob-btn reveal d4" id="book">Book Now<span class="blob" aria-hidden="true"></span></a>
     </div>
   </section>
 
@@ -690,7 +723,7 @@
         <h2 class="about-title" id="about-title"><span>The</span>ritual</h2>
         <p class="about-kicker">1. About us</p>
         <p class="about-text">At Aurelia Med Spa, we believe great skin is quiet confidence. Our licensed injectors and aestheticians pair medical-grade treatments with a calm, private setting in the heart of Miami, so every visit feels less like an appointment and more like a pause. From your first consultation, we listen, plan with care, and deliver natural results that look like you, only more rested.</p>
-        <a href="#about" class="btn-outline">Meet us</a>
+        <a href="contact.html" class="btn-outline">Meet us</a>
       </div>
     </div>
   </section>
@@ -724,28 +757,28 @@
             <div class="treat-step-content">
               <h3>Botox &amp; Fillers</h3>
               <p>Soften fine lines and restore natural volume with precise, conservative injections from our licensed nurse injectors, always tailored to your features.</p>
-              <a href="#book" class="btn-outline-light">View more</a>
+              <button type="button" class="btn-outline-light" data-drawer="injectables">View more</button>
             </div>
           </div>
           <div class="treat-step">
             <div class="treat-step-content">
               <h3>Facials &amp; Peels</h3>
               <p>From hydrating HydraFacials to resurfacing peels and microneedling, our medical-grade facials leave your skin clearer, smoother and visibly brighter, with results you can see after one visit and that build over a series.</p>
-              <a href="#book" class="btn-outline-light">View more</a>
+              <button type="button" class="btn-outline-light" data-drawer="facials">View more</button>
             </div>
           </div>
           <div class="treat-step">
             <div class="treat-step-content">
               <h3>Laser &amp; Body</h3>
               <p>Laser hair removal, skin tightening and non-surgical body sculpting to refine and firm, with no downtime.</p>
-              <a href="#book" class="btn-outline-light">View more</a>
+              <button type="button" class="btn-outline-light" data-drawer="laser">View more</button>
             </div>
           </div>
           <div class="treat-step">
             <div class="treat-step-content">
               <h3>IV Therapy</h3>
               <p>Restore hydration, energy and glow from the inside out. Our vitamin infusions are customized to you and administered in a private lounge while you unwind.</p>
-              <a href="#book" class="btn-outline-light">View more</a>
+              <button type="button" class="btn-outline-light" data-drawer="iv">View more</button>
             </div>
           </div>
         </div>
@@ -753,7 +786,7 @@
       <div class="treat-end">
         <h2 class="blur-in">Begin your golden hour</h2>
         <p class="opacity-in">Step away from the noise and back into yourself. Book your visit and let our team take care of the rest at Aurelia Med Spa.</p>
-        <a href="#book" class="blob-btn opacity-in">Book Now<span class="blob blob-2" aria-hidden="true"></span></a>
+        <a href="book.html" class="blob-btn opacity-in">Book Now<span class="blob blob-2" aria-hidden="true"></span></a>
       </div>
     </div>
   </section>
@@ -778,7 +811,7 @@
           <h2 class="space-title blur-in"><span>The</span>detail</h2>
           <p class="space-kicker opacity-in">3. Gift Aurelia</p>
           <p class="space-text opacity-in">Looking for the perfect gift? Surprise someone special with an Aurelia gift card. Choose from facials, injectables, body treatments or a full glow day. Give the gift of time, beauty and calm.</p>
-          <a href="#gift" class="btn-outline opacity-in">Gift</a>
+          <a href="gift-cards.html" class="btn-outline opacity-in">Gift</a>
         </div>
       </div>
     </div>
@@ -820,7 +853,7 @@
         </div>
         <div class="sky-under">
           <p>Medical-grade results<br>in a sanctuary made for slowing down</p>
-          <a href="#book" class="sky-btn"><span class="crc" aria-hidden="true"></span><span>Book now</span><svg viewBox="0 0 19 15" fill="none" aria-hidden="true"><path d="M0 7.5h17M11 1l6.5 6.5L11 14" stroke="#fff" stroke-width="1.2"/></svg></a>
+          <a href="book.html" class="sky-btn"><span class="crc" aria-hidden="true"></span><span>Book now</span><svg viewBox="0 0 19 15" fill="none" aria-hidden="true"><path d="M0 7.5h17M11 1l6.5 6.5L11 14" stroke="#fff" stroke-width="1.2"/></svg></a>
         </div>
       </div>
     </div>
@@ -831,9 +864,9 @@
       </div></div>
       <div class="sky-trio">
         <div class="sky-trio-row">
-          <div class="sky-arch"><a href="#treatments"><span class="bg" style="background-image:url('assets/img/arch-fillers.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="1" viewBox="0 0 492 459" aria-hidden="true"></svg><h3>Botox <span class="amp">&amp;</span> Fillers</h3><span><span class="chip">4 treatments</span></span></span></a></div>
-          <div class="sky-arch"><a href="#treatments"><span class="bg" style="background-image:url('assets/img/arch-facials.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="2" viewBox="0 0 532 447" aria-hidden="true"></svg><h3>Facials <span class="amp">&amp;</span> Peels</h3><span><span class="chip">5 treatments</span></span></span></a></div>
-          <div class="sky-arch"><a href="#treatments"><span class="bg" style="background-image:url('assets/img/arch-laser.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="3" viewBox="0 0 490 459" aria-hidden="true"></svg><h3>Laser <span class="amp">&amp;</span> Body</h3><span><span class="chip">4 treatments</span></span></span></a></div>
+          <div class="sky-arch"><a href="treatments.html?c=injectables"><span class="bg" style="background-image:url('assets/img/arch-fillers.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="1" viewBox="0 0 492 459" aria-hidden="true"></svg><h3>Botox <span class="amp">&amp;</span> Fillers</h3><span><span class="chip">4 treatments</span></span></span></a></div>
+          <div class="sky-arch"><a href="treatments.html?c=facials"><span class="bg" style="background-image:url('assets/img/arch-facials.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="2" viewBox="0 0 532 447" aria-hidden="true"></svg><h3>Facials <span class="amp">&amp;</span> Peels</h3><span><span class="chip">4 treatments</span></span></span></a></div>
+          <div class="sky-arch"><a href="treatments.html?c=laser"><span class="bg" style="background-image:url('assets/img/arch-laser.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="3" viewBox="0 0 490 459" aria-hidden="true"></svg><h3>Laser <span class="amp">&amp;</span> Body</h3><span><span class="chip">3 treatments</span></span></span></a></div>
         </div>
       </div>
     </div>
@@ -850,7 +883,7 @@
           <li><b>02</b><div><strong>A plan made for you</strong><em>Clear recommendations, realistic results and pricing up front. No pressure.</em></div></li>
           <li><b>03</b><div><strong>Treatment &amp; aftercare</strong><em>Comfortable, precise treatment followed by a check-in to make sure you love the result.</em></div></li>
         </ol>
-        <a href="#book" class="btn-outline-light" style="margin-top:32px">Book a consultation</a>
+        <a href="book.html?t=consultation" class="btn-outline-light" style="margin-top:32px">Book a consultation</a>
       </div>
     </div>
   </section>
@@ -891,8 +924,8 @@
       <div class="mt-dsc"><p>Aurelia Glow Club —</p><p>Save up to 20% on every treatment</p></div>
     </div>
     <div class="mt-cards">
-      <a href="#gift" class="mt-card mt-card1" aria-label="Glow Club membership"><span class="in"><img src="assets/img/club-robe.jpg" alt="Guest in a white robe enjoying a coffee after a treatment" loading="lazy" width="750" height="1033" /></span></a>
-      <a href="#gift" class="mt-card mt-card2" aria-label="Glow Club card"><span class="in club"><svg class="leaf-art" data-variant="0" data-stroke="rgba(217,183,126,.78)" viewBox="0 0 1003 879" aria-hidden="true"></svg><span class="club-mark">Aurelia</span><span class="club-name">Glow<br>Club</span><span class="club-no">0427 · 2026</span></span></a>
+      <a href="gift-cards.html" class="mt-card mt-card1" aria-label="Glow Club membership"><span class="in"><img src="assets/img/club-robe.jpg" alt="Guest in a white robe enjoying a coffee after a treatment" loading="lazy" width="750" height="1033" /></span></a>
+      <a href="gift-cards.html" class="mt-card mt-card2" aria-label="Glow Club card"><span class="in club"><svg class="leaf-art" data-variant="0" data-stroke="rgba(217,183,126,.78)" viewBox="0 0 1003 879" aria-hidden="true"></svg><span class="club-mark">Aurelia</span><span class="club-name">Glow<br>Club</span><span class="club-no">0427 · 2026</span></span></a>
     </div>
   </section>
   <script>
@@ -908,9 +941,9 @@
     });
   </script>
 
-  <div class="mt-more"><a href="#gift">View offers</a></div>
+  <div class="mt-more"><a href="gift-cards.html">View offers</a></div>
 
-  <div class="big-btn"><a href="tel:+13055550142" aria-label="Book now, call (305) 555-0142"><span class="t"><span class="t-split">book now</span><svg viewBox="0 0 72 53" fill="none" aria-hidden="true"><path d="M0 26.5h70M44 1c3 14 12 22.5 26 25.5M44 52c3-14 12-22.5 26-25.5" stroke="rgb(184,176,170)" stroke-width="1.6"/></svg></span></a></div>
+  <div class="big-btn"><a href="book.html" aria-label="Book now"><span class="t"><span class="bb-txt">book now</span><svg viewBox="0 0 72 53" fill="none" aria-hidden="true"><path d="M0 26.5h70M44 1c3 14 12 22.5 26 25.5M44 52c3-14 12-22.5 26-25.5" stroke="rgb(184,176,170)" stroke-width="1.6"/></svg></span></a></div>
 </main>
 
 <footer class="site-footer" id="contact">
@@ -935,6 +968,23 @@
   </div>
 </footer>
 
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-ovr"></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-h">
+    <button class="drawer-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="#272727" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="drawer-slider"><div class="drawer-track"></div></div>
+    <div class="drawer-body">
+      <p class="drawer-num"></p>
+      <h3 class="drawer-h" id="drawer-h"></h3>
+      <p class="drawer-copy"></p>
+      <ul class="drawer-list"></ul>
+      <a class="drawer-cta" href="book.html">Begin your golden hour</a>
+      <a class="drawer-all" href="treatments.html">See all</a>
+    </div>
+  </aside>
+</div>
+
 <div class="team-badge" aria-hidden="true">
   <svg class="ring" viewBox="0 0 162 167"><defs><path id="badge-c" d="M81 83.5m-62 0a62 62 0 1 1 124 0a62 62 0 1 1 -124 0"/></defs><circle cx="81" cy="83.5" r="80" fill="rgb(241,233,230)" fill-opacity=".92"/><text font-family="Poppins,sans-serif" font-size="13" fill="rgb(39,39,39)"><textPath href="#badge-c" textLength="386" lengthAdjust="spacing">CLICK &amp; DRAG · CLICK &amp; DRAG ·</textPath></text></svg>
   <svg class="arw" viewBox="0 0 41 18" fill="none"><path d="M0 9h39M31 1l8 8-8 8" stroke="rgb(39,39,39)" stroke-width="1.2"/></svg>
@@ -944,6 +994,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="assets/js/treatments-data.js"></script>
 <script>
 (function () {
   gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -1323,13 +1374,72 @@
     });
 
     /* big button: "book now" types over to "now book" on hover (0.25s) */
-    var bb = document.querySelector('.big-btn a'), t = bb.querySelector('.t-split');
+    var bb = document.querySelector('.big-btn a'), t = bb.querySelector('.bb-txt');
     bb.addEventListener('mouseenter', function () { gsap.to(t, { duration: 0.25, text: 'now book', ease: 'none', overwrite: true }); });
     bb.addEventListener('mouseleave', function () { gsap.to(t, { duration: 0.25, text: 'book now', ease: 'none', overwrite: true }); });
 
     /* footer: map and rows settle in over the first 150px of it */
     if (!reduce) gsap.fromTo(['.f-map', '.f-rows'], { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: 'none',
       scrollTrigger: { trigger: '.site-footer', start: 'top bottom', end: '+=150', scrub: true } });
+  })();
+
+  /* View more drawer (Ironclad's services popup, from the left): opens
+     with the step's photos drifting, its treatments and a booking CTA */
+  (function () {
+    var drawer = document.getElementById('drawer');
+    if (!drawer || !window.AURELIA_TREATMENTS) return;
+    var ovr = drawer.querySelector('.drawer-ovr'), panel = drawer.querySelector('.drawer-panel'), track = drawer.querySelector('.drawer-track');
+    var copy = {
+      injectables: 'Botox, Dysport, dermal fillers and skin boosters, placed by licensed nurse injectors under our medical director. Subtle, balanced results that still look like you.',
+      facials: 'Medical-grade facials for clarity, texture and glow: HydraFacial, chemical peels, microneedling and our signature Golden Hour Facial.',
+      laser: 'Laser hair removal for every skin tone, IPL photofacials for sun damage and redness, and non-surgical body contouring.',
+      iv: 'Vitamin and hydration drips delivered by a registered nurse in a private lounge, for energy, recovery and brighter skin from within.'
+    };
+    var nums = { injectables: '(01)', facials: '(02)', laser: '(03)', iv: '(04)' };
+    var price = function (x) { return x.opts.slice().sort(function (a, b) { return +a[1].replace(/[^0-9.]/g, '') - +b[1].replace(/[^0-9.]/g, ''); })[0][1]; };
+    var drift = null, lastFocus = null;
+    function startDrift() {
+      if (drift) drift.kill();
+      var over = track.scrollWidth - track.parentElement.offsetWidth;
+      if (over <= 0 || reduce) return;
+      gsap.set(track, { x: 0 });
+      drift = gsap.to(track, { x: -over, duration: 3, ease: 'sine.inOut', repeat: -1, yoyo: true });
+    }
+    function open(cat) {
+      var c = window.AURELIA_CATS.filter(function (x) { return x.id === cat; })[0];
+      var items = window.AURELIA_TREATMENTS.filter(function (t) { return t.cat === cat; });
+      var imgs = [];
+      items.forEach(function (t) { t.gallery.forEach(function (g) { if (imgs.indexOf(g) < 0) imgs.push(g); }); });
+      track.innerHTML = imgs.slice(0, 6).map(function (g) { return '<img src="' + g + '" alt="" />'; }).join('');
+      drawer.querySelector('.drawer-num').textContent = nums[cat] + ' Treatments';
+      drawer.querySelector('.drawer-h').textContent = c.name;
+      drawer.querySelector('.drawer-copy').textContent = copy[cat];
+      drawer.querySelector('.drawer-list').innerHTML = items.map(function (t) { return '<li><a href="treatment.html?t=' + t.slug + '">' + t.full + '<span>from ' + price(t) + '</span></a></li>'; }).join('');
+      drawer.querySelector('.drawer-cta').href = 'book.html?t=' + items[0].slug;
+      drawer.querySelector('.drawer-all').href = 'treatments.html?c=' + cat;
+      drawer.querySelector('.drawer-all').textContent = 'See all ' + c.name;
+      lastFocus = document.activeElement;
+      drawer.setAttribute('aria-hidden', 'false'); drawer.style.pointerEvents = 'auto';
+      if (window.lenis) window.lenis.stop();
+      gsap.killTweensOf([ovr, panel]);
+      gsap.to(ovr, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+      gsap.to(panel, { x: '0%', duration: reduce ? 0 : 0.7, ease: 'power3.out', onComplete: startDrift });
+      drawer.querySelector('.drawer-close').focus({ preventScroll: true });
+    }
+    function close() {
+      if (drift) drift.kill();
+      gsap.killTweensOf([ovr, panel]);
+      gsap.to(ovr, { opacity: 0, duration: 0.35, ease: 'power2.in' });
+      gsap.to(panel, { x: '-100%', duration: reduce ? 0 : 0.55, ease: 'power3.in', onComplete: function () {
+        drawer.setAttribute('aria-hidden', 'true'); drawer.style.pointerEvents = 'none';
+        if (window.lenis) window.lenis.start();
+        if (lastFocus) lastFocus.focus({ preventScroll: true });
+      } });
+    }
+    document.querySelectorAll('[data-drawer]').forEach(function (b) { b.addEventListener('click', function () { open(b.dataset.drawer); }); });
+    drawer.querySelector('.drawer-close').addEventListener('click', close);
+    ovr.addEventListener('click', close);
+    window.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') close(); });
   })();
 
   /* Hero video: fetched whole as a blob (CF Workers ignores Range
@@ -1367,5 +1477,6 @@
   });
 })();
 </script>
+<script src="assets/js/transition.js"></script>
 </body>
 </html>

@@ -1,0 +1,106 @@
+<!--{"title":"Book a Treatment | Aurelia Med Spa Miami","desc":"Request your appointment at Aurelia Med Spa in Brickell, Miami. Choose a treatment, pick a day and time, and we confirm within two hours. First consultations are complimentary.","file":"book.html","crumb":"Book","css":["forms"],"data":true}-->
+<style>
+  /* Booking page: same structure as the contact page (7sky contacts clone) */
+  .contacts_b .num{display:block;font:400 13px/13px Manrope,sans-serif;color:#9a7b4f;margin-bottom:14px}
+  .ya_map_ovr .map{background-image:url('assets/img/space-lounge.jpg')}
+  .ya_map_ovr .map::after{content:"";position:absolute;inset:0;background:rgba(28,21,18,.15)}
+  .f1 select{cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23 13'%3E%3Cpath d='M.5.5 11.5 12 22.5.5' fill='none' stroke='%23272727'/%3E%3C/svg%3E") no-repeat right 104px center/23px 13px}
+  .f1 select:invalid{color:rgba(39,39,39,.55)}
+  .f1 input[type=date]{color-scheme:light}
+  .f1 input[type=date]:invalid{color:rgba(39,39,39,.55)}
+  .f1 .note{display:block;margin-top:10px;font:300 16px/24px 'Poppins',sans-serif;color:rgba(39,39,39,.6);text-align:center}
+  @media (max-width:1100px){ .f1 select{background-position:right 60px center} }
+  @media (max-width:767px){ .f1 select{background-position:right 0 center} }
+</style>
+
+  <section class="j_ttl">
+    <div class="container"><h1 class="h2 t-split" data-start="0"><span class="ln">Book</span></h1></div>
+  </section>
+
+  <section class="contacts_b" aria-label="How booking works">
+    <div class="container">
+      <div class="ln"></div>
+      <div class="rows">
+        <div class="cols cols01"><div class="h5"><span class="num">01</span>Choose:</div><div class="tx up">Your treatment,<span class="br">or a free consultation</span></div></div>
+        <div class="cols cols02"><div class="h5"><span class="num">02</span>Pick a time:</div><div class="tx up">Mon – Fri 9AM – 7PM</div><div class="tx up">Saturday 10AM – 4PM</div></div>
+        <div class="cols cols03"><div class="h5"><span class="num">03</span>We confirm:</div><div class="tx up">Within two hours,</div><div class="tx up">or call <a href="tel:+13055550142">(305) 555-0142</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gnt_ovr">
+    <a href="#big_form" class="gnt_lnk" aria-label="Book now: jump to the booking form">
+      <svg class="gnt" viewBox="0 0 190 198" aria-hidden="true"><defs><path id="gnt-c" d="M95 99m-74 0a74 74 0 1 1 148 0a74 74 0 1 1 -148 0"/></defs><text font-family="Poppins,sans-serif" font-weight="300" font-size="21" fill="rgb(39,39,39)"><textPath href="#gnt-c" textLength="460" lengthAdjust="spacing">BOOK YOUR VISIT · BOOK YOUR VISIT ·</textPath></text></svg>
+      <svg class="a" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 1v29M5 19l11 11 11-11" stroke="rgb(39,39,39)" stroke-width="1.3"/></svg>
+    </a>
+  </div>
+
+  <div class="ya_map">
+    <div class="ya_map_ovr"><div class="map" role="img" aria-label="The Aurelia treatment lounge"></div></div>
+  </div>
+
+  <section class="we_would" aria-labelledby="book-h">
+    <div class="we_would_bg"></div>
+    <div class="ls_ttl">
+      <h2 class="h2" id="book-h">
+        <svg class="leaf leaf01 leaf-art" data-variant="1" data-stroke="rgba(110,146,118,.8)" viewBox="0 0 492 459" aria-hidden="true"></svg>
+        <svg class="leaf leaf02 leaf-art" data-variant="3" data-stroke="rgba(196,128,146,.75)" viewBox="0 0 490 459" aria-hidden="true"></svg>
+        <span class="t t-split"><span class="ln">Your golden</span><span class="ln">hour</span><span class="ln">starts here</span></span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="big_form" id="big_form" aria-label="Booking request form">
+    <div class="container">
+      <form class="f1" data-form="booking" novalidate>
+        <div class="rows"><div class="cols cols01"><label class="t" for="b-name">Name</label></div><div class="cols cols02"><input id="b-name" name="name" type="text" required autocomplete="name" placeholder="Enter your name*" /></div></div>
+        <div class="rows"><div class="cols cols01"><label class="t" for="b-email">Email address</label></div><div class="cols cols02"><input id="b-email" name="email" type="email" required autocomplete="email" placeholder="Enter your e-mail*" /></div></div>
+        <div class="rows"><div class="cols cols01"><label class="t" for="b-phone">Phone</label></div><div class="cols cols02"><input id="b-phone" name="phone" type="tel" required autocomplete="tel" placeholder="Enter your mobile number*" /></div></div>
+        <div class="rows"><div class="cols cols01"><label class="t" for="b-treat">Treatment</label></div><div class="cols cols02"><select id="b-treat" name="treatment" required><option value="" disabled selected>Choose a treatment*</option><option>Complimentary consultation</option></select></div></div>
+        <div class="rows"><div class="cols cols01"><label class="t" for="b-date">Preferred date</label></div><div class="cols cols02"><input id="b-date" name="date" type="date" required /></div></div>
+        <div class="rows"><div class="cols cols01"><label class="t" for="b-time">Preferred time</label></div><div class="cols cols02"><select id="b-time" name="time" required><option value="" disabled selected>Choose a time*</option><option>Morning (9AM – 12PM)</option><option>Afternoon (12PM – 4PM)</option><option>Evening (4PM – 7PM)</option></select></div></div>
+        <div class="rows"><label class="sr-only" for="b-msg">Notes</label><textarea id="b-msg" name="notes" placeholder="Anything we should know?"></textarea></div>
+        <div class="rows rows_btn"><button class="get_go" type="submit"><span class="t">Request<svg viewBox="0 0 64 44" fill="none" aria-hidden="true"><path d="M0 22h62M40 1c2.5 11 10 18.5 22 21M40 43c2.5-11 10-18.5 22-21" stroke="#fff" stroke-width="1.5"/></svg></span></button></div>
+        <p class="note">We confirm every request by text or email within two hours during opening hours.</p>
+      </form>
+      <div class="f-thanks" role="status" aria-live="polite"><h3>Thank you,<span class="br">see you soon</span></h3><p>Your request is in. We’ll confirm your appointment within two hours.</p></div>
+    </div>
+    <div class="mv-end"></div>
+  </section>
+
+<script data-page>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  gsap.to('.ls_ttl .leaf01', { opacity: 1, duration: 0.35, delay: 1.3, ease: 'none', scrollTrigger: { trigger: '.ls_ttl', start: 'top bottom-=200' } });
+  gsap.to('.ls_ttl .leaf02', { opacity: 1, duration: 0.35, delay: 1.35, ease: 'none', scrollTrigger: { trigger: '.ls_ttl', start: 'top bottom-=200' } });
+  if (!reduce) gsap.from('.contacts_b .ln', { scaleX: 0, duration: 1.4, ease: 'power2.inOut', delay: 0.4 });
+
+  /* treatments from the shared list, grouped by category; ?t= preselects */
+  var sel = document.getElementById('b-treat');
+  window.AURELIA_CATS.forEach(function (c) {
+    var g = document.createElement('optgroup'); g.label = c.name;
+    window.AURELIA_TREATMENTS.filter(function (t) { return t.cat === c.id; }).forEach(function (t) {
+      var o = document.createElement('option'); o.value = t.full; o.textContent = t.full; o.dataset.slug = t.slug; g.appendChild(o);
+    });
+    sel.appendChild(g);
+  });
+  var want = new URLSearchParams(location.search).get('t');
+  if (want === 'consultation') sel.options[1].selected = true;
+  else if (want) { var o = sel.querySelector('[data-slug="' + want + '"]'); if (o) o.selected = true; }
+  var d = document.getElementById('b-date'), today = new Date();
+  d.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+  var form = document.querySelector('.f1');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = [].filter.call(form.querySelectorAll('[required]'), function (el) { return !el.value.trim() || (el.type === 'email' && !/^\S+@\S+\.\S+$/.test(el.value)); });
+    form.querySelectorAll('.rows').forEach(function (r) { r.style.borderColor = ''; });
+    if (bad.length) { bad.forEach(function (el) { el.closest('.rows').style.borderColor = '#b4553f'; }); bad[0].focus(); return; }
+    var done = function () { document.querySelector('.big_form').classList.add('sent'); if (window.ScrollTrigger) ScrollTrigger.refresh(); };
+    var ep = form.dataset.endpoint;
+    if (!ep) { done(); return; }
+    fetch(ep, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) })
+      .then(done).catch(done);
+  });
+})();
+</script>

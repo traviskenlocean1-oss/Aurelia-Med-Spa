@@ -4,3 +4,5 @@
 /wrangler.jsonc
 /.wrangler
 /node_modules
+/src
+/build.js

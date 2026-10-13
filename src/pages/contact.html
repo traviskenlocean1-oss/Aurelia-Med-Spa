@@ -1,0 +1,90 @@
+<!--{"title":"Contact Aurelia Med Spa | Brickell, Miami","desc":"Contact Aurelia Med Spa in Brickell, Miami. Call (305) 555-0142, email hello@aureliamedspa.com or send a message. Open Monday to Saturday.","file":"contact.html","crumb":"Contact","css":["forms"],"data":true}-->
+<section class="j_ttl">
+    <div class="container"><h1 class="h2 t-split" data-start="0"><span class="ln">Contacts</span></h1></div>
+  </section>
+
+  <section class="contacts_b" aria-label="Visit, hours and contact details">
+    <div class="container">
+      <div class="ln"></div>
+      <div class="rows">
+        <div class="cols cols01"><div class="h5">Address:</div><div class="tx up">Brickell Avenue,<span class="br">Miami, FL 33131</span></div></div>
+        <div class="cols cols02"><div class="h5">Opening Hours:</div><div class="tx up">Monday – Friday 9AM – 7PM</div><div class="tx up">Saturday 10AM – 4PM</div></div>
+        <div class="cols cols03"><div class="h5">Contact Details:</div><div class="tx up"><a href="tel:+13055550142">(305) 555-0142</a></div><div class="tx up"><a href="mailto:hello@aureliamedspa.com">hello@aureliamedspa.com</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gnt_ovr">
+    <a href="#big_form" class="gnt_lnk" aria-label="Get in touch: jump to the message form">
+      <svg class="gnt" viewBox="0 0 190 198" aria-hidden="true"><defs><path id="gnt-c" d="M95 99m-74 0a74 74 0 1 1 148 0a74 74 0 1 1 -148 0"/></defs><text font-family="Poppins,sans-serif" font-weight="300" font-size="21" fill="rgb(39,39,39)"><textPath href="#gnt-c" textLength="460" lengthAdjust="spacing">GET IN TOUCH · GET IN TOUCH ·</textPath></text></svg>
+      <svg class="a" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 1v29M5 19l11 11 11-11" stroke="rgb(39,39,39)" stroke-width="1.3"/></svg>
+    </a>
+  </div>
+
+  <div class="ya_map">
+    <div class="ya_map_ovr">
+      <div class="map" role="img" aria-label="Map of Brickell, Miami"></div>
+      <svg class="pin" viewBox="0 0 67 110" aria-hidden="true"><path d="M33.5 0C15 0 0 15 0 33.5 0 58.7 33.5 110 33.5 110S67 58.7 67 33.5C67 15 52 0 33.5 0z" fill="rgb(39,39,39)"/><circle cx="33.5" cy="33.5" r="12" fill="#D9B77E"/></svg>
+      <span class="attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</span>
+    </div>
+  </div>
+
+  <section class="we_would" aria-labelledby="hear-h">
+    <div class="we_would_bg"></div>
+    <div class="ls_ttl">
+      <h2 class="h2" id="hear-h">
+        <svg class="leaf leaf01 leaf-art" data-variant="1" data-stroke="rgba(110,146,118,.8)" viewBox="0 0 492 459" aria-hidden="true"></svg>
+        <svg class="leaf leaf02 leaf-art" data-variant="3" data-stroke="rgba(196,128,146,.75)" viewBox="0 0 490 459" aria-hidden="true"></svg>
+        <span class="t t-split"><span class="ln">We would</span><span class="ln">love to</span><span class="ln">hear from</span><span class="ln">you</span></span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="big_form" id="big_form" aria-label="Send us a message">
+    <div class="container">
+      <form class="f1" data-form="contact" novalidate>
+        <div class="rows"><div class="cols cols01"><label class="t" for="c-name">Name</label></div><div class="cols cols02"><input id="c-name" name="name" type="text" required autocomplete="name" placeholder="Enter your name*" /></div></div>
+        <div class="rows"><div class="cols cols01"><label class="t" for="c-email">Email address</label></div><div class="cols cols02"><input id="c-email" name="email" type="email" required autocomplete="email" placeholder="Enter your e-mail*" /></div></div>
+        <div class="rows"><label class="sr-only" for="c-msg">Message</label><textarea id="c-msg" name="message" placeholder="Message"></textarea></div>
+        <div class="rows rows_btn"><button class="get_go" type="submit"><span class="t">Submit<svg viewBox="0 0 64 44" fill="none" aria-hidden="true"><path d="M0 22h62M40 1c2.5 11 10 18.5 22 21M40 43c2.5-11 10-18.5 22-21" stroke="#fff" stroke-width="1.5"/></svg></span></button></div>
+      </form>
+      <div class="f-thanks" role="status" aria-live="polite"><h3>Thank you for<span class="br">your message!</span></h3><p>We’ll be in touch within one business day.</p></div>
+    </div>
+    <div class="mv-end"></div>
+  </section>
+
+<script data-page>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* leaves fade in as the title lines land (reference: 0.35s, l-=.55 / l-=.5) */
+  gsap.to('.ls_ttl .leaf01', { opacity: 1, duration: 0.35, delay: 1.3, ease: 'none', scrollTrigger: { trigger: '.ls_ttl', start: 'top bottom-=200' } });
+  gsap.to('.ls_ttl .leaf02', { opacity: 1, duration: 0.35, delay: 1.35, ease: 'none', scrollTrigger: { trigger: '.ls_ttl', start: 'top bottom-=200' } });
+  if (!reduce) gsap.from('.contacts_b .ln', { scaleX: 0, duration: 1.4, ease: 'power2.inOut', delay: 0.4 });
+
+  /* arriving from a gift card / membership button: prefill the message */
+  var p = new URLSearchParams(location.search), g = p.get('gift'), msg = document.getElementById('c-msg');
+  if (g) {
+    var t = (window.AURELIA_TREATMENTS || []).filter(function (x) { return x.slug === g; })[0];
+    var text = /^balance-/.test(g) ? 'I would like to buy a $' + Number(g.split('-')[1]).toLocaleString('en-US') + ' Aurelia gift balance (' + (p.get('format') || 'E-gift card') + ').'
+      : g === 'glow-club' ? 'I would like to join the Glow Club membership.'
+      : g === 'golden-club' ? 'I would like to join the Golden Club membership.'
+      : t ? 'I would like to buy a gift card for ' + t.full + '.' : '';
+    if (text) msg.value = text;
+  }
+
+  /* Form: validate, then send to the endpoint in data-endpoint (Formspree)
+     when one is set; until then it shows the thank-you state */
+  var form = document.querySelector('.f1');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = [].filter.call(form.querySelectorAll('[required]'), function (el) { return !el.value.trim() || (el.type === 'email' && !/^\S+@\S+\.\S+$/.test(el.value)); });
+    form.querySelectorAll('.rows').forEach(function (r) { r.style.borderColor = ''; });
+    if (bad.length) { bad.forEach(function (el) { el.closest('.rows').style.borderColor = '#b4553f'; }); bad[0].focus(); return; }
+    var done = function () { document.querySelector('.big_form').classList.add('sent'); if (window.ScrollTrigger) ScrollTrigger.refresh(); };
+    var ep = form.dataset.endpoint;
+    if (!ep) { done(); return; }
+    fetch(ep, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) })
+      .then(done).catch(done);
+  });
+})();
+</script>

@@ -1,0 +1,103 @@
+/* Contact + booking pages: cloned from 7sky.liqium.com/contacts.html */
+  /* Cloned from 7sky.liqium.com/contacts.html (contacts.min.css), 1920
+     base + 1451-1600 overrides. #dadbd5 -> #e6ddd5, #f3eee8 -> rgb(241,233,230) */
+  .j_ttl{position:relative;z-index:10;padding-top:187px;background:#e6ddd5;text-align:center}
+  .j_ttl .h2{font:200 157px/157px 'Poppins',sans-serif;text-transform:uppercase;letter-spacing:-.035em}
+  .contacts_b{padding:11px 0 115px;background:#e6ddd5}
+  .contacts_b .ln{height:1px;width:100%;background:#c9bdb2}
+  .contacts_b .rows{display:flex;justify-content:space-between;max-width:1300px;width:100%;margin:89px auto 0}
+  .contacts_b .h5{color:#9b918a;font:400 16px/16px 'Poppins',sans-serif;text-transform:uppercase;margin-bottom:23px}
+  .contacts_b .tx{color:#000;font:300 24px/39px 'Poppins',sans-serif}
+  .contacts_b .tx a{transition:color .35s}
+  .contacts_b .tx a:hover{color:#9a7b4f}
+  .gnt_ovr{background:#e6ddd5;padding:10px 0 370px}
+  .gnt_lnk{display:block;margin:0 auto;width:190px;height:198px;position:relative;transition:transform .5s}
+  .gnt_lnk:hover{transform:scale(.85)}
+  .gnt_lnk .gnt{position:absolute;inset:0;animation:gnt-spin 26s linear infinite}
+  .gnt_lnk .a{position:absolute;inset:0;margin:auto;width:32px;height:32px}
+  @keyframes gnt-spin{to{transform:rotate(360deg)}}
+  .ya_map{position:relative;z-index:100;overflow:hidden;background:#e6ddd5}
+  .ya_map_ovr{position:relative;height:1360px;overflow:hidden;border-radius:1920px 1920px 0 0;-webkit-mask-image:-webkit-radial-gradient(white,#000)}
+  .ya_map_ovr .map{position:absolute;inset:0;background:url('../img/map-brickell.jpg') no-repeat 50% 50%/cover}
+  .ya_map_ovr .pin{position:absolute;top:163px;left:0;right:0;margin:auto;width:67px;height:110px}
+  .ya_map_ovr .attr{position:absolute;right:16px;top:430px;font:300 11px/1 'Poppins',sans-serif;color:rgba(39,39,39,.6)}
+  .ya_map_ovr .attr a{color:inherit;text-decoration:underline}
+  .we_would{position:relative;z-index:150;min-height:950px;margin-top:-895px;padding-top:342px;overflow:hidden}
+  .we_would_bg{position:absolute;top:0;left:0;right:0;margin:0 auto;background:rgb(241,233,230);border-radius:3000px 3000px 0 0;min-height:100vh;height:100%}
+  .ls_ttl{text-align:center;position:relative}
+  .ls_ttl .h2{position:relative;display:inline-block;z-index:30;font:200 157px/138px 'Poppins',sans-serif;letter-spacing:-.035em;text-transform:uppercase;color:rgb(39,39,39)}
+  .ls_ttl .h2 .t{position:relative;z-index:2}
+  .ls_ttl .leaf{position:absolute;opacity:0}
+  .ls_ttl .leaf01{top:-122px;left:-227px;width:542px;height:509px}
+  .ls_ttl .leaf02{bottom:-29px;right:-202px;width:569px;height:456px}
+  .big_form{position:relative;z-index:150;background:rgb(241,233,230);padding:290px 0 370px}
+  .f1 .rows{position:relative;display:flex;align-items:center;max-width:1850px;margin:0 auto -1px;border:1px solid #a89a8c;border-radius:125px}
+  .f1 .rows.rows_btn{border:0;border-radius:75px;margin:0 auto}
+  .f1 .cols01{width:700px;padding-left:104px;flex:none}
+  .f1 .cols02{width:calc(100% - 700px)}
+  .f1 .t{color:rgba(39,39,39,.7);font:300 36px/36px 'Poppins',sans-serif;text-transform:uppercase}
+  .f1 input,.f1 select{width:100%;background:transparent;border:0;border-radius:0 125px 125px 0;color:rgba(39,39,39,.85);font:300 36px/36px 'Poppins',sans-serif;padding:80px 104px 80px 0;outline:none;appearance:none;-webkit-appearance:none}
+  .f1 input::placeholder,.f1 textarea::placeholder{color:rgba(39,39,39,.55)}
+  .f1 textarea{width:100%;background:transparent;border:0;border-radius:125px;color:rgba(39,39,39,.85);font:300 36px/36px 'Poppins',sans-serif;padding:80px 104px 20px;min-height:484px;resize:none;outline:none}
+  .f1 textarea::placeholder{text-transform:uppercase}
+  .f1 .rows:focus-within{border-color:rgb(39,39,39)}
+  .get_go{width:100%;border:0;cursor:pointer;background:rgb(39,39,39);display:flex;align-items:center;justify-content:center;border-radius:75px;padding:70px 0 49px;transition:background .35s}
+  .get_go:hover{background:#9a7b4f}
+  .get_go .t{color:#fff;font:200 81px/80px 'Poppins',sans-serif;text-transform:uppercase;display:inline-flex;align-items:center}
+  .get_go svg{width:64px;height:44px;margin:-6px 0 0 18px}
+  .f-thanks{display:none;text-align:center;padding:60px 0}
+  .f-thanks h3{font:200 81px/80px 'Poppins',sans-serif;text-transform:uppercase}
+  .f-thanks p{font:300 19px/32px 'Poppins',sans-serif;margin-top:24px}
+  .big_form.sent .f1{display:none}
+  .big_form.sent .f-thanks{display:block}
+  .mv-end{position:absolute;bottom:0;height:0}
+  @media (max-width:1600px){
+    .j_ttl .h2{font-size:131px;line-height:115px}
+    .contacts_b{padding:10px 0 85px}
+    .contacts_b .h5{font-size:14px;line-height:14px;margin-bottom:20px}
+    .contacts_b .tx{font-size:22px;line-height:35px}
+    .gnt_ovr{padding:10px 0 308px}
+    .we_would{padding-top:320px}
+    .ls_ttl .h2{font-size:131px;line-height:115px}
+    .ls_ttl .leaf01{top:-97px;left:-204px;width:465px;height:436px}
+    .ls_ttl .leaf02{width:500px;height:401px;bottom:-29px;right:-202px}
+    .big_form{padding:165px 0 308px}
+    .f1 .t{font-size:32px;line-height:32px}
+    .f1 input,.f1 select{padding:65px 104px 65px 0;font-size:32px;line-height:32px}
+    .f1 textarea{padding:55px 104px 20px 104px;font-size:28px;line-height:28px;min-height:420px}
+    .get_go .t{font-size:80px;line-height:80px}
+  }
+  @media (max-width:1100px){
+    .j_ttl .h2,.ls_ttl .h2{font-size:86px;line-height:80px}
+    .contacts_b .rows{padding:0 40px;gap:30px}
+    .f1 .cols01{width:340px;padding-left:60px}
+    .f1 .cols02{width:calc(100% - 340px)}
+    .f1 .t,.f1 input,.f1 select{font-size:24px;line-height:24px}
+    .f1 input,.f1 select{padding:44px 60px 44px 0}
+    .f1 textarea{padding:44px 60px 20px;font-size:22px}
+    .get_go .t{font-size:52px;line-height:52px}
+  }
+  @media (max-width:767px){
+    .j_ttl{padding-top:130px}
+    .j_ttl .h2{font-size:56px;line-height:56px}
+    .contacts_b .rows{flex-direction:column;gap:36px;margin-top:50px;padding:0}
+    .contacts_b .tx{font-size:18px;line-height:28px}
+    .gnt_ovr{padding-bottom:200px}
+    .gnt_lnk{width:140px;height:146px}
+    .ya_map_ovr{height:900px}
+    .ya_map_ovr .pin{top:120px}
+    .we_would{margin-top:-560px;padding-top:180px;min-height:600px}
+    .ls_ttl .h2{font-size:44px;line-height:44px}
+    .ls_ttl .leaf01{width:240px;height:226px;left:-90px;top:-60px}
+    .ls_ttl .leaf02{width:240px;height:192px;right:-80px;bottom:-40px}
+    .big_form{padding:90px 0 200px}
+    .f1 .rows{flex-direction:column;align-items:stretch;border-radius:36px}
+    .f1 .cols01,.f1 .cols02{width:100%;padding:0 28px}
+    .f1 .t{font-size:13px;line-height:13px;padding-top:22px}
+    .f1 input,.f1 select{font-size:18px;line-height:22px;padding:10px 0 22px}
+    .f1 textarea{font-size:18px;line-height:24px;padding:24px 28px;min-height:220px;border-radius:36px}
+    .get_go{padding:34px 0 28px;border-radius:40px}
+    .get_go .t{font-size:34px;line-height:34px}
+    .get_go svg{width:36px;height:25px}
+    .f-thanks h3{font-size:40px;line-height:42px}
+  }

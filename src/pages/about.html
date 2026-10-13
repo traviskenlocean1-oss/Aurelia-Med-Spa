@@ -1,0 +1,344 @@
+<!--{"title":"About Aurelia Med Spa | Physician-Led Aesthetics in Miami","desc":"Meet Aurelia Med Spa: physician-led injectables, medical facials and laser treatments in Brickell, Miami. Our story, our mission and the care behind every visit.","file":"about.html","header":"dark","crumb":"About"}-->
+<style>
+  /* Cloned from 7sky.liqium.com/about.html (about.min.css), 1920 base +
+     the 1451-1600 overrides. Gallient -> Poppins 200, SuisseIntl -> Poppins 300.
+     Palette: #292929 -> #1c1512, #dadbd5 -> #e6ddd5, #f3eee8 -> rgb(241,233,230), #fff -> #faf7f5 */
+  .j_top{padding:187px 0 0;background:#1c1512}
+  .j_top .h2{font:200 157px/138px 'Poppins',sans-serif;letter-spacing:-.035em;text-align:center;text-transform:uppercase;color:rgb(241,233,230)}
+  .j_top .txt{font:300 16px/26px 'Poppins',sans-serif;text-align:center;text-transform:uppercase;margin:18px 0 0;color:rgb(241,233,230)}
+
+  .glry_rows{display:flex;overflow:hidden;padding-top:130px;justify-content:center;background:#1c1512}
+  .glry_rows .cols{display:flex;flex-direction:column;flex:none}
+  .glry_rows .cols .up_icol,.glry_rows .cols .lr_icol{background:no-repeat 50% 50%/cover;width:401px;height:612px;border-radius:18px}
+  .glry_rows .cols .up_icol{margin:0 0 9px}
+  .glry_rows .cols02,.glry_rows .cols04{margin:0 7px}
+  .glry_rows .cols03,.glry_rows .cols05{margin:145px 0 0}
+  .glry_rows .cols01{margin:145px 0 0 -53px}
+
+  .srces_ovr{padding:360px 0 0;background:#1c1512}
+  .srces_ovr .srces{text-align:center}
+  .srces_ovr .srces .h2{font:200 157px/138px 'Poppins',sans-serif;text-align:center;color:rgb(241,233,230);text-transform:uppercase;position:relative;display:inline-block}
+  .srces_ovr .srces .h2 .st{font:200 55px/55px 'Poppins',sans-serif;text-transform:none;position:absolute;color:#D9B77E}
+  .srces_ovr .srces .h2 .lw{position:relative;display:inline-block}
+  .srces_ovr .srces .h2 .st{white-space:nowrap}
+  .srces_ovr .srces .h2 .st01{top:2px;right:calc(100% + 35px)}
+  .srces_ovr .srces .h2 .st02{top:0;left:calc(100% + 40px)}
+
+  /* realistic leaves: back photo, the ticker line, then a cut-out leaf
+     layer in front of the words (same stacking as the reference) */
+  .bg_main{margin-top:-100px;background:#1c1512}
+  .bg_main .back_bg{position:relative;z-index:2;height:2880px;overflow:hidden;pointer-events:none;background:url('assets/img/eco-back.webp') no-repeat 50% 0/cover}
+  .bg_main .front_bg{position:relative;z-index:3;height:2880px;pointer-events:none;background:url('assets/img/eco-front.webp') no-repeat 50% 0/cover}
+  .bg_main .bg_p{position:relative;top:-1750px;z-index:1;height:168px;overflow:hidden}
+  .bg_main .tk{display:flex;width:max-content;will-change:transform}
+  .bg_main .h2b{font:200 157px/168px 'Poppins',sans-serif;letter-spacing:-.035em;text-transform:uppercase;color:rgb(241,233,230);white-space:nowrap;padding-right:.6em}
+
+  .ms_bg{position:relative;z-index:3;background:#e6ddd5;border-radius:1920px 1920px 0 0;margin-top:-1050px;padding:172px 0 0;overflow:hidden;text-align:center;color:rgb(39,39,39)}
+  .ms_bg .h2{position:relative;z-index:1;font:200 157px/138px 'Poppins',sans-serif;letter-spacing:-.035em;text-transform:uppercase;padding:210px 0 0;display:inline-block}
+  .ms_bg .h2 .t{position:relative;z-index:30}
+  .ms_bg .h2 .leaf{position:absolute;opacity:0}
+  .ms_bg .h2 .leaf01{top:-90px;left:-145px;width:410px;height:385px}
+  .ms_bg .h2 .leaf02{bottom:-117px;right:-266px;width:475px;height:405px}
+  .ms_bg .txt{position:relative;z-index:1;font:300 19px/32px 'Poppins',sans-serif;max-width:665px;margin:29px auto 0}
+  .ms_bg .rows{margin:348px 0 0;display:flex;justify-content:space-between}
+  .ms_bg .rows .cols{width:33.333%;padding:0 25px}
+  .ms_bg .rows .h3{font:200 55px/55px 'Poppins',sans-serif;margin:0 0 61px}
+  .ms_bg .rows .d_img{width:214px;height:317px;overflow:hidden;margin:0 auto;border-radius:110px;position:relative}
+  .ms_bg .rows .d_img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ms_bg .rows .t{font:300 19px/34px 'Poppins',sans-serif;margin:60px auto 0;max-width:510px}
+  .ms_bg .txt_lnk{margin:59px 0 0}
+
+  .choose_gift_coupon{position:relative;z-index:50;min-height:200vh;background:#e6ddd5;padding:570px 0 150px;overflow:hidden;color:rgb(39,39,39)}
+  .choose_gift_coupon_in{position:absolute;top:570px;left:0;right:0;margin:0 auto;background:#faf7f5;border-radius:3000px 3000px 0 0;min-height:100vh;height:100%}
+  .gift_card{position:absolute;top:0;left:0;right:0;margin:0 auto;width:348px;height:479px;z-index:50;transform:translateY(330px)}
+  .gift_card a{display:block;width:100%;height:100%}
+  .gift_card .gc{position:absolute;top:0;left:0;right:0;margin:0 auto;display:block;width:348px;height:479px}
+  .gift_card .gc01{left:-75px;transform:translateY(65px) rotate(-3deg);z-index:10}
+  .gift_card .gc02{top:110px;left:100px;transform:translateY(65px) rotate(10deg)}
+  .gift_card .gc .in{display:block;width:100%;height:100%;border-radius:18px;overflow:hidden;transition:.35s;box-shadow:0 30px 60px rgba(28,21,18,.18)}
+  .gift_card:hover .gc01 .in{transform:translateX(-8%) rotate(-10deg)}
+  .gift_card:hover .gc02 .in{transform:translateX(8%) rotate(10deg)}
+
+  .gf_ttl{text-align:center;position:relative;margin-top:470px}
+  .gf_ttl .h2{font:200 138px/114px 'Poppins',sans-serif;letter-spacing:-.02em}
+  .gf_ttl .txt{font:300 19px/34px 'Poppins',sans-serif;margin:44px 0 0}
+  .gf_ttl .txt_lnk{margin:58px 0 0}
+
+  .leg_revival{margin:276px 0 0;position:relative;z-index:50}
+  .leg_revival .rows{display:flex;justify-content:center}
+  .leg_revival .rows .cols{width:500px;position:relative}
+  .leg_revival .rows .cols.cols02{width:60%}
+  .leg_revival .txt_list{list-style:none;text-align:center;margin:46px 0 0}
+  .leg_revival .txt_list li{margin:0 0 29px;font:200 78px/96px 'Poppins',sans-serif;letter-spacing:-.02em;transition:color .35s;cursor:pointer}
+  .leg_revival .txt_list li:last-child{margin-bottom:0}
+  .leg_revival .txt_list li:hover{color:#9a7b4f}
+  .leg_revival .txt_list li a{color:inherit}
+  .leg_revival .oin{display:none}
+  .leg_revival .oit{position:absolute;top:0;opacity:0;transition:opacity .35s ease;display:block;width:400px;height:auto;transform-origin:0 0;border-radius:14px;pointer-events:none;z-index:-1}
+  .leg_revival .oit.active{opacity:1}
+  .leg_revival .rows.l1 .oit1{width:400px;left:0;top:-65px} .leg_revival .rows.l1 .oit2{width:196px;left:-50px} .leg_revival .rows.l1 .oit3{width:299px;top:350px;right:100px} .leg_revival .rows.l1 .oit2l{opacity:0!important}
+  .leg_revival .rows.l2 .oit1{width:346px;left:0;top:-65px} .leg_revival .rows.l2 .oit2{width:175px;left:-50px} .leg_revival .rows.l2 .oit3{width:324px;top:350px;right:37%} .leg_revival .rows.l2 .oit2l{opacity:0!important}
+  .leg_revival .rows.l3 .oit1{width:399px;left:0;top:65px} .leg_revival .rows.l3 .oit2{width:330px;left:-50px;top:-65px} .leg_revival .rows.l3 .oit3{width:254px;top:320px;right:50%} .leg_revival .rows.l3 .oit2l{opacity:0!important}
+  .leg_revival .rows.l4 .oit1{width:196px;left:0;top:-65px} .leg_revival .rows.l4 .oit2l{width:470px;left:10%;top:265px} .leg_revival .rows.l4 .oit3{width:353px;top:0;right:30%} .leg_revival .rows.l4 .oit2{opacity:0!important}
+  .leg_revival .rows.l5 .oit1{width:335px;left:0;top:-65px} .leg_revival .rows.l5 .oit2{width:196px;left:-50px;top:-65px} .leg_revival .rows.l5 .oit3{width:244px;top:320px;right:35%} .leg_revival .rows.l5 .oit2l{opacity:0!important}
+  .leg_revival .rows.l6 .oit1{width:292px;left:25%;top:-65px} .leg_revival .rows.l6 .oit2l{width:320px;left:0;top:350px} .leg_revival .rows.l6 .oit3{width:338px;top:70px;right:40%} .leg_revival .rows.l6 .oit2{opacity:0!important}
+  .leg_revival .j_img03{text-align:right}
+
+  .ya_map{position:relative;z-index:100;margin:0 0 92px;padding:148px 0 0;background:#faf7f5;overflow:hidden;color:rgb(39,39,39)}
+  .ya_map_ttl{text-align:center;margin-bottom:100px}
+  .ya_map_ttl .q{display:block;width:42px;height:68px;margin:0 auto}
+  .ya_map_ttl .t-lnk{margin-top:43px}
+  .ya_map_ovr{position:relative;height:100vh;overflow:hidden;border-radius:1920px 1920px 0 0;-webkit-mask-image:-webkit-radial-gradient(white,#000)}
+  .ya_map_ovr .map{position:absolute;inset:0;background:url('assets/img/map-brickell.jpg') no-repeat 50% 50%/cover}
+  .ya_map_ovr .pin{position:absolute;inset:0;margin:auto;width:67px;height:110px}
+  .ya_map_ovr .attr{position:absolute;right:16px;bottom:10px;font:300 11px/1 'Poppins',sans-serif;color:rgba(39,39,39,.6)}
+  .ya_map_ovr .attr a{color:inherit;text-decoration:underline}
+  .mv-end{height:0}
+
+  @media (max-width:1700px){
+    .glry_rows .cols01{margin:145px 0 0 -125px}
+  }
+  @media (max-width:1600px){
+    .j_top{padding-top:155px}
+    .j_top .h2{font-size:131px;line-height:115px}
+    .j_top .txt{font-size:13px;line-height:22px}
+    .glry_rows .cols .up_icol,.glry_rows .cols .lr_icol{width:334px;height:510px}
+    .glry_rows .cols01{margin:145px 0 0 -65px}
+    .srces_ovr{padding:290px 0 0}
+    .srces_ovr .srces .h2{font-size:131px;line-height:115px}
+    .srces_ovr .srces .h2 .st{font-size:50px;line-height:50px}
+    .bg_main{margin-top:-79px}
+    .bg_main .front_bg,.bg_main .back_bg{height:2400px}
+    .bg_main .bg_p{top:-1470px}
+    .ms_bg .h2{font-size:131px;line-height:115px}
+    .ms_bg .h2 .leaf01{width:375px;height:352px;top:-55px;left:-150px}
+    .ms_bg .h2 .leaf02{width:425px;height:362px;bottom:-126px;right:-253px}
+    .ms_bg .txt{font-size:16px;line-height:28px}
+    .ms_bg .rows{margin:289px 0 0}
+    .ms_bg .rows .h3{font-size:45px;line-height:45px}
+    .ms_bg .rows .t{font-size:16px;line-height:27px;margin:30px auto 0}
+    .choose_gift_coupon_in{top:504px}
+    .gift_card{width:335px;height:461px;transform:translateY(270px)}
+    .gift_card .gc{width:335px;height:461px}
+    .gf_ttl{margin-top:444px}
+    .gf_ttl .h2{font-size:115px;line-height:95px}
+    .gf_ttl .txt{font-size:16px;line-height:27px;margin:37px 0 0}
+    .gf_ttl .txt_lnk{margin:46px 0 0}
+    .leg_revival{margin-top:242px}
+    .leg_revival .rows.l1 .oit1{width:355px;top:-35px} .leg_revival .rows.l1 .oit2{left:-25px} .leg_revival .rows.l1 .oit3{width:280px}
+    .leg_revival .rows.l2 .oit1{width:325px;top:-35px} .leg_revival .rows.l2 .oit2{width:175px;left:25px} .leg_revival .rows.l2 .oit3{width:300px;right:35%;top:310px}
+    .leg_revival .rows.l3 .oit1{width:350px;top:35px} .leg_revival .rows.l3 .oit2{width:300px;top:-10px;left:-25px} .leg_revival .rows.l3 .oit3{width:235px;right:55%}
+    .leg_revival .rows.l4 .oit2l{top:250px;left:5%;width:350px} .leg_revival .rows.l4 .oit3{width:310px;right:25%}
+    .leg_revival .rows.l5 .oit1{top:-10px;width:300px} .leg_revival .rows.l5 .oit2{top:-25px;width:175px} .leg_revival .rows.l5 .oit3{right:25%;width:225px;top:300px}
+    .leg_revival .rows.l6 .oit1{width:275px;left:5%;top:-10px} .leg_revival .rows.l6 .oit2l{top:400px;width:275px} .leg_revival .rows.l6 .oit3{width:315px;top:70px;right:25%}
+    .leg_revival .rows .cols{width:350px}
+    .leg_revival .txt_list li{font-size:62px;line-height:76px}
+  }
+  @media (max-width:1550px){
+    .leg_revival .rows.l1 .oit1{width:320px;top:-25px}
+    .leg_revival .txt_list li{font-size:56px;line-height:68px}
+  }
+  @media (max-width:1100px){
+    .j_top .h2,.srces_ovr .srces .h2,.ms_bg .h2{font-size:86px;line-height:78px}
+    .srces_ovr .srces .h2 .st{font-size:32px;line-height:32px}
+    .srces_ovr .srces .h2 .st01{right:calc(100% + 16px)}
+    .srces_ovr .srces .h2 .st02{left:calc(100% + 16px)}
+    .gf_ttl .h2{font-size:80px;line-height:70px}
+    .leg_revival .txt_list li{font-size:54px;line-height:56px}
+    .leg_revival .rows .cols{width:180px}
+  }
+  @media (max-width:767px){
+    .j_top{padding-top:130px}
+    .j_top .h2{font-size:64px;line-height:60px}
+    .j_top .txt{font-size:12px;line-height:20px}
+    .glry_rows{padding-top:60px}
+    .glry_rows .cols .up_icol,.glry_rows .cols .lr_icol{width:42vw;height:64vw;border-radius:12px}
+    .glry_rows .cols03,.glry_rows .cols05{margin-top:60px}
+    .glry_rows .cols01{margin:60px 0 0 -20vw}
+    .srces_ovr{padding:150px 0 0}
+    .srces_ovr .srces .h2,.ms_bg .h2{font-size:44px;line-height:42px}
+    .srces_ovr .srces .h2 .st{font-size:20px;line-height:20px}
+    .srces_ovr .srces .h2 .st01{top:-26px;right:auto;left:0}
+    .srces_ovr .srces .h2 .st02{top:auto;bottom:-26px;left:auto;right:0}
+    .bg_main{margin-top:-40px}
+    .bg_main .front_bg,.bg_main .back_bg{height:1300px}
+    .bg_main .bg_p{top:-820px;height:80px}
+    .bg_main .h2b{font-size:72px;line-height:80px}
+    .ms_bg{margin-top:-520px;padding-top:90px}
+    .ms_bg .h2{padding-top:110px}
+    .ms_bg .h2 .leaf01{width:200px;height:188px;left:-60px;top:20px}
+    .ms_bg .h2 .leaf02{width:220px;height:188px;right:-90px;bottom:-80px}
+    .ms_bg .txt{padding:0 20px}
+    .ms_bg .rows{flex-direction:column;gap:60px;margin-top:110px}
+    .ms_bg .rows .cols{width:100%}
+    .ms_bg .rows .h3{font-size:34px;line-height:36px;margin-bottom:30px}
+    .choose_gift_coupon{min-height:0;padding-top:300px}
+    .choose_gift_coupon_in{top:300px}
+    .gift_card{transform:translateY(120px) scale(.6)}
+    .gf_ttl{margin-top:330px}
+    .gf_ttl .h2{font-size:48px;line-height:46px}
+    .gf_ttl .txt{padding:0 20px}
+    .gf_ttl .txt .br{display:inline}
+    .leg_revival{margin-top:120px}
+    .leg_revival .rows .cols01,.leg_revival .rows .cols03{display:none}
+    .leg_revival .rows .cols02{width:100%}
+    .leg_revival .txt_list li{font-size:38px;line-height:40px;margin-bottom:18px}
+    .ya_map{padding-top:90px}
+    .ya_map_ttl{margin-bottom:50px}
+    .ya_map_ovr{height:70vh}
+  }
+</style>
+
+  <section class="j_top" aria-labelledby="about-h1">
+    <div class="container">
+      <h1 class="h2 t-split" id="about-h1" data-start="0"><span class="ln">About</span></h1>
+      <p class="txt up">Physician-led aesthetics<span class="br">in the heart of Miami</span></p>
+    </div>
+  </section>
+
+  <div class="glry_rows" aria-hidden="true">
+    <div class="cols cols01 cols_tp"><div class="up_icol" style="background-image:url('assets/img/s/p01.jpg')"></div><div class="lr_icol" style="background-image:url('assets/img/s/p18.jpg')"></div></div>
+    <div class="cols cols02 cols_bp"><div class="up_icol" style="background-image:url('assets/img/s/p06.jpg')"></div><div class="lr_icol" style="background-image:url('assets/img/s/p04.jpg')"></div></div>
+    <div class="cols cols03 cols_tp"><div class="up_icol" style="background-image:url('assets/img/s/p02.jpg')"></div><div class="lr_icol" style="background-image:url('assets/img/s/p17.jpg')"></div></div>
+    <div class="cols cols04 cols_bp"><div class="up_icol" style="background-image:url('assets/img/s/p16.jpg')"></div><div class="lr_icol" style="background-image:url('assets/img/s/p14.jpg')"></div></div>
+    <div class="cols cols05 cols_tp"><div class="up_icol" style="background-image:url('assets/img/s/p23.jpg')"></div><div class="lr_icol" style="background-image:url('assets/img/s/p20.jpg')"></div></div>
+  </div>
+
+  <section class="srces_ovr" aria-label="Who we are">
+    <div class="container">
+      <div class="srces">
+        <h2 class="h2 t-split"><span class="ln"><span class="lw">Medical<span class="st st01">Physician-led</span></span></span><span class="ln">Spa. Luxury</span><span class="ln">Treatments</span><span class="ln">for Skin</span><span class="ln"><span class="lw">&amp; Glow<span class="st st02">Aurelia Spa</span></span></span></h2>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg_main" aria-hidden="true">
+    <div class="back_bg">
+      <div class="front_bg"></div>
+      <div class="bg_p"><div class="tk"><span class="h2b">Rooted In Clean Beauty</span><span class="h2b">Rooted In Clean Beauty</span></div></div>
+    </div>
+  </div>
+
+  <section class="ms_bg" aria-labelledby="mission-h">
+    <div class="container">
+      <h2 class="h2" id="mission-h">
+        <svg class="leaf leaf01 leaf-art" data-variant="1" data-stroke="rgba(110,146,118,.8)" viewBox="0 0 492 459" aria-hidden="true"></svg>
+        <svg class="leaf leaf02 leaf-art" data-variant="3" data-stroke="rgba(196,128,146,.75)" viewBox="0 0 490 459" aria-hidden="true"></svg>
+        <span class="t t-split"><span class="ln">Our</span><span class="ln">mission</span></span>
+      </h2>
+      <p class="txt up">Aurelia pairs medical precision with the calm of a private spa. Every treatment is planned by a licensed provider under the oversight of our medical director, using FDA-approved products and techniques we would trust on ourselves. We believe great results should look like you on your best day: rested, bright and never overdone. Expect an unhurried consultation, honest recommendations and aftercare that continues long after you leave.</p>
+      <div class="rows">
+        <div class="cols cols01"><h3 class="h3 t-split"><span class="ln">Medical</span><span class="ln">Injectables</span></h3><div class="d_img up"><img src="assets/img/s/p09.jpg" alt="Provider preparing a precise injectable treatment" loading="lazy" width="900" height="1350" /></div><p class="t up">Botox, dermal fillers and skin boosters placed by licensed nurse injectors for soft, natural-looking results.</p></div>
+        <div class="cols cols02"><h3 class="h3 t-split"><span class="ln">Facials &amp; Skin</span><span class="ln">Renewal</span></h3><div class="d_img up"><img src="assets/img/s/p08.jpg" alt="Aesthetician performing a medical-grade facial" loading="lazy" width="900" height="1350" /></div><p class="t up">HydraFacials, chemical peels and microneedling tailored to your skin, from clarity and texture to lasting glow.</p></div>
+        <div class="cols cols03"><h3 class="h3 t-split"><span class="ln">Laser &amp; Body</span><span class="ln">Contouring</span></h3><div class="d_img up"><img src="assets/img/s/p11.jpg" alt="Laser hair removal treatment on a client's leg" loading="lazy" width="900" height="1350" /></div><p class="t up">Laser hair removal, IPL photofacials and non-surgical body contouring with medical-grade devices.</p></div>
+      </div>
+      <div class="txt_lnk"><a href="treatments.html" class="t-lnk">View treatments</a></div>
+    </div>
+  </section>
+
+  <section class="choose_gift_coupon" aria-labelledby="gift-h">
+    <div class="gift_card">
+      <a href="gift-cards.html" aria-label="Aurelia gift cards">
+        <span class="gc gc01"><span class="in"><span class="card-face dark"><svg class="leaf-art" data-variant="0" data-stroke="rgba(217,183,126,.78)" viewBox="0 0 1003 879" aria-hidden="true"></svg><span class="mk">Aurelia</span><span class="nm">Glow<br>Club</span><span class="no">0427 · 2026</span></span></span></span>
+        <span class="gc gc02"><span class="in"><span class="card-face light"><svg class="leaf-art" data-variant="2" data-stroke="rgba(154,123,79,.7)" viewBox="0 0 532 447" aria-hidden="true"></svg><span class="mk">Aurelia Med Spa</span><span class="nm">Gift<br>Card</span><span class="no">$250</span></span></span></span>
+      </a>
+    </div>
+    <div class="choose_gift_coupon_in"></div>
+    <div class="gf_ttl">
+      <h2 class="h2 t-split" id="gift-h"><span class="ln">Find the</span><span class="ln">Perfect Gift</span></h2>
+      <p class="txt up">Choose a gift card for a favorite treatment<span class="br">or a balance card that lets them pick</span>the treatment themselves.</p>
+      <div class="txt_lnk"><a href="gift-cards.html" class="t-lnk">Choose</a></div>
+    </div>
+    <div class="leg_revival">
+      <div class="container">
+        <div class="rows">
+          <div class="cols cols01"><img src="data:," alt="" class="oit oit1" /><img src="data:," alt="" class="oit oit2l" /></div>
+          <div class="cols cols02">
+            <ul class="txt_list">
+              <li data-i="assets/img/s/p09.jpg,assets/img/s/p10.jpg,assets/img/s/p30.jpg"><a href="treatment.html?t=botox">Botox &amp; Dysport</a></li>
+              <li data-i="assets/img/s/p12.jpg,assets/img/s/p24.jpg,assets/img/s/p05.jpg"><a href="treatment.html?t=hydrafacial">HydraFacial</a></li>
+              <li data-i="assets/img/s/p02.jpg,assets/img/s/p13.jpg,assets/img/s/p25.jpg"><a href="treatment.html?t=chemical-peel">Chemical Peel</a></li>
+              <li data-i="assets/img/s/p11.jpg,assets/img/s/p29.jpg,assets/img/s/p21.jpg"><a href="treatment.html?t=laser-hair-removal">Laser Hair Removal</a></li>
+              <li data-i="assets/img/s/p10.jpg,assets/img/s/p31.jpg,assets/img/s/p26.jpg"><a href="treatment.html?t=microneedling">Microneedling</a></li>
+              <li data-i="assets/img/s/p27.jpg,assets/img/s/p07.jpg,assets/img/s/p19.jpg"><a href="treatment.html?t=iv-therapy">IV Therapy</a></li>
+            </ul>
+          </div>
+          <div class="cols cols03"><img src="data:," alt="" class="oit oit2" /><img src="data:," alt="" class="oit oit3" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ya_map" aria-label="Find us">
+    <div class="container">
+      <div class="ya_map_ttl">
+        <a href="https://www.google.com/maps/search/?api=1&query=Brickell+Avenue+Miami+FL" target="_blank" rel="noopener" class="txt">
+          <svg class="q" viewBox="0 0 42 68" aria-hidden="true"><path d="M21 0C9.4 0 0 9.4 0 21c0 15.8 21 47 21 47s21-31.2 21-47C42 9.4 32.6 0 21 0z" fill="rgb(39,39,39)"/><circle cx="21" cy="21" r="8" fill="#faf7f5"/></svg>
+          <span class="t-lnk">Show on the map</span>
+        </a>
+      </div>
+    </div>
+    <div class="ya_map_ovr">
+      <div class="map" role="img" aria-label="Map of Brickell, Miami"></div>
+      <svg class="pin" viewBox="0 0 67 110" aria-hidden="true"><path d="M33.5 0C15 0 0 15 0 33.5 0 58.7 33.5 110 33.5 110S67 58.7 67 33.5C67 15 52 0 33.5 0z" fill="rgb(39,39,39)"/><circle cx="33.5" cy="33.5" r="12" fill="#D9B77E"/></svg>
+      <span class="attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</span>
+    </div>
+    <div class="mv-end"></div>
+  </section>
+
+<script data-page>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Gallery: odd columns drift up 145px, even ones down 145px across the
+     section (mobile 45px) — reference values */
+  var g = document.querySelector('.glry_rows');
+  if (!reduce) {
+    var d = window.innerWidth < 1001 ? 45 : 145, top0 = g.getBoundingClientRect().top;
+    gsap.timeline({ scrollTrigger: { trigger: g, start: 'top top+=' + top0, end: 'bottom top', scrub: true } })
+      .to('.glry_rows .cols_tp', { y: -d, ease: 'none' }, 0)
+      .to('.glry_rows .cols_bp', { y: d, ease: 'none' }, 0);
+  }
+
+  /* Eco line: two copies drift left at 40px/s (measured on the reference) */
+  var tk = document.querySelector('.bg_main .tk');
+  if (!reduce) {
+    var w = tk.firstElementChild.getBoundingClientRect().width;
+    gsap.to(tk, { x: -w, duration: w / 40, ease: 'none', repeat: -1 });
+  }
+
+  /* Mission: leaves fade in as the title lines finish */
+  gsap.to('.ms_bg .leaf01', { opacity: 1, duration: 0.35, delay: 0.7, ease: 'none', scrollTrigger: { trigger: '.ms_bg .h2', start: 'top bottom-=200' } });
+  gsap.to('.ms_bg .leaf02', { opacity: 1, duration: 0.35, delay: 0.75, ease: 'none', scrollTrigger: { trigger: '.ms_bg .h2', start: 'top bottom-=200' } });
+
+  /* Gift: cards sink 200px over 1.5 screens; the white dome swells 1.5x
+     over 600px from 200px below the top (reference) */
+  if (!reduce) {
+    gsap.to('.gift_card', { y: '+=200', ease: 'none', scrollTrigger: { trigger: '.gc01', start: 'top bottom', end: '+=' + 1.5 * document.documentElement.clientHeight, scrub: true } });
+    gsap.to('.choose_gift_coupon_in', { scale: 1.5, ease: 'none', scrollTrigger: { trigger: '.choose_gift_coupon_in', start: 'top top+=200', end: '+=600', scrub: true } });
+  }
+
+  /* Treatment list: hovering a row shows its three photos in the side
+     columns and they follow the pointer's height (1s, expo) */
+  var rowsEl = document.querySelector('.leg_revival .rows');
+  var oit = document.querySelectorAll('.leg_revival .oit');
+  document.querySelectorAll('.txt_list li').forEach(function (li, i) {
+    var src = li.dataset.i.split(',');
+    src.forEach(function (s) { var im = new Image(); im.src = s; });
+    li.addEventListener('mouseenter', function () {
+      rowsEl.querySelector('.oit1').src = src[0];
+      rowsEl.querySelector(i === 3 || i === 5 ? '.oit2l' : '.oit2').src = src[1];
+      rowsEl.querySelector('.oit3').src = src[2];
+      rowsEl.classList.add('l' + (i + 1));
+      oit.forEach(function (o) { o.classList.add('active'); });
+    });
+    li.addEventListener('mouseleave', function () {
+      rowsEl.classList.remove('l' + (i + 1));
+      oit.forEach(function (o) { o.classList.remove('active'); });
+    });
+    li.addEventListener('mousemove', function (e) {
+      gsap.to(oit, { x: 50, y: e.clientY - li.getBoundingClientRect().top, duration: 1, ease: 'expo.out', overwrite: 'auto' });
+    });
+  });
+})();
+</script>
