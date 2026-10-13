@@ -249,29 +249,30 @@
   .sky-bg{position:absolute;inset:0;background:url('assets/img/sky-scene.jpg') 50% 0/cover no-repeat;transform-origin:50% 50%}
   .sky-bg::after{content:"";position:absolute;inset:0;background:rgba(12,10,8,.55)}
   .sky-leaf{position:absolute;left:0;top:0;width:min(770px,51vw);height:auto;pointer-events:none;opacity:.55;z-index:1}
-  .sky-info{position:absolute;left:30px;right:30px;top:64%;z-index:20;color:#fff;font-size:13px;line-height:22px;font-weight:300;text-transform:uppercase;letter-spacing:.03em}
+  .sky-info{position:absolute;left:30px;right:30px;top:calc(84px + 3vh);z-index:20;color:#fff;font-size:13px;line-height:22px;font-weight:300;text-transform:uppercase;letter-spacing:.03em}
   .sky-info-row{display:flex;justify-content:space-between;padding-top:19px;border-top:1px solid rgba(255,255,255,.15)}
   .sky-info-r{display:flex;justify-content:space-between;width:min(674px,45vw)}
   .sky-reveal{position:absolute;inset:0;z-index:50;overflow:hidden;pointer-events:none}
   .sky-reveal-in{position:absolute;inset:0;background:url('assets/img/sky-reveal.jpg') 50% 0/cover no-repeat;clip-path:circle(30% at 50% 150%);will-change:clip-path,transform}
   .sky-reveal-ovr{position:absolute;inset:0;background:#000;opacity:.5}
   .sky-word{position:absolute;left:0;right:0;display:flex;justify-content:center;color:#fff;font-weight:200;font-size:30.5vh;line-height:1;letter-spacing:-.035em;text-transform:uppercase;white-space:nowrap;transform-origin:50% 100%;will-change:transform}
-  .sky-w1{top:40.8vh;z-index:20}
-  .sky-w2{top:66.5vh;z-index:60}
+  .sky-w1{top:28vh;z-index:20}
+  .sky-w2{top:52vh;z-index:60}
   .sky-word .ltr{display:inline-block}
   .sky-top{position:absolute;left:0;right:0;top:0;bottom:0;z-index:70;pointer-events:none;opacity:0;color:#fff;text-align:center}
-  .sky-logo{position:absolute;left:0;right:0;top:calc(66.5vh - 112px)}
+  .sky-logo{position:absolute;left:0;right:0;top:calc(52vh - 112px)}
   .sky-logo .s{position:relative;display:inline-block;font-size:13px;line-height:13px;font-weight:300;font-style:italic}
   .sky-logo .s svg{position:absolute;top:-21px;left:-55px;width:120px;height:60px}
   .sky-logo .h4{font-weight:200;font-size:62px;line-height:58px;margin:6px 0 -1px;letter-spacing:-.02em}
   .sky-logo .l{font-size:13px;line-height:13px;text-transform:uppercase;letter-spacing:.08em}
-  .sky-under{position:absolute;left:0;right:0;top:calc(66.5vh + 30.5vh * .98)}
+  .sky-under{position:absolute;left:0;right:0;top:calc(52vh + 30.5vh * .98)}
   .sky-under p{font-size:13px;line-height:22px;text-transform:uppercase;letter-spacing:.03em}
   .sky-btn{position:relative;display:inline-flex;align-items:center;gap:20px;margin-top:26px;padding:16px 46px 14px 44px;border:1px solid #fff;border-radius:20px;overflow:hidden;color:#fff;font-weight:200;font-size:25px;line-height:25px;text-transform:uppercase;pointer-events:auto;isolation:isolate}
   .sky-btn .crc{position:absolute;left:0;top:0;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:#B8976A;transform:scale(0);z-index:-1;pointer-events:none}
   .sky-btn svg{width:19px;height:15px}
 
-  .sky-menu{position:relative;z-index:1;margin-top:-100vh;margin-top:-100svh}
+  .sky-menu{position:relative;z-index:1}
+  .sky-intro-wrap{height:200vh;height:200svh;margin-top:-100vh;margin-top:-100svh}
   .sky-intro{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#292929;background:#dadbd5}
   .sky-intro h2{font-weight:200;font-size:min(131px,18.8vh);line-height:.88;letter-spacing:-.035em;text-transform:uppercase}
   .sky-intro h2 span{display:block}
@@ -279,7 +280,7 @@
   .sky-intro p .br{display:block}
   .sky-intro .w{position:relative;display:inline-block}
   .sky-intro .w svg{position:absolute;top:-4px;left:-8px;width:calc(100% + 16px);height:37px;overflow:visible}
-  .sky-trio{position:relative;z-index:2;margin-top:40vh;padding:180px 10px 120px;background:#dadbd5}
+  .sky-trio{position:relative;z-index:2;padding:40px 10px 120px;background:#dadbd5}
   .sky-trio-row{display:flex;justify-content:space-between}
   .sky-arch{width:calc(33.333% - 5px)}
   .sky-arch a{position:relative;display:block;height:min(762px,92vh);border:1px solid #999998;border-radius:414px;overflow:hidden;color:#292929}
@@ -310,7 +311,7 @@
     .sky-top{opacity:1}
     .sky-logo{top:calc(38vh - 112px)}
     .sky-under{top:calc(38vh + 22vw)}
-    .sky-menu{margin-top:0}
+    .sky-intro-wrap{height:auto;margin-top:0}
     .sky-intro{position:relative;height:auto;padding:120px 20px 40px}
     .sky-intro h2{font-size:64px}
     .sky-intro p .br{display:inline}
@@ -654,10 +655,10 @@
       </div>
     </div>
     <div class="sky-menu">
-      <div class="sky-intro">
+      <div class="sky-intro-wrap"><div class="sky-intro">
         <h2 id="sky-menu-title"><span>Aurelia spa</span><span>Menu</span></h2>
         <p>Choose from our <span class="w">full range of<svg viewBox="0 0 140 45" preserveAspectRatio="none" fill="none" aria-hidden="true"><path class="sky-scribble" d="M32 7C46.5 5 85.5 4.5 115 13.5C154.8 25.6 136.9 39.9 116.5 42.5C89.5 46 49.7 43.3 23.5 34.5C-4.9 25 -14.5 6.5 43.5 1" stroke="#292929" stroke-width="1"/></svg></span> medical-grade treatments, from precise injectables <span class="br">and advanced facials to laser resurfacing, body contouring</span> and restorative IV therapy, all under medical supervision.</p>
-      </div>
+      </div></div>
       <div class="sky-trio">
         <div class="sky-trio-row">
           <div class="sky-arch"><a href="#treatments"><span class="bg" style="background-image:url('assets/img/arch-fillers.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="1" viewBox="0 0 492 459" aria-hidden="true"></svg><h3>Botox <span class="amp">&amp;</span> Fillers</h3><span><span class="chip">4 treatments</span></span></span></a></div>
@@ -921,7 +922,7 @@
         var W1 = textW(w1), W2 = textW(w2);
         var span = (W1 + W2) * k + gap;
         var x1 = -span / 2 + (W1 * k) / 2, x2 = span / 2 - (W2 * k) / 2;
-        var bottomY = window.innerHeight * 0.84;
+        var bottomY = window.innerHeight * 0.70;
         var y1 = bottomY - w1.offsetTop + (k - 1) * w1.offsetHeight, y2 = bottomY - w2.offsetTop + (k - 1) * w2.offsetHeight;
 
         /* load-in (reference: letters flip up from rotationX 90, 0.05 stagger) */
@@ -932,14 +933,14 @@
         /* one pinned 1600px track; positions below are in px of scroll,
            matching the reference's separate triggers (0-600, 200-1600,
            800-960) */
-        gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: '+=1600', pin: true, pinSpacing: true, scrub: true, anticipatePin: 1 } })
+        gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: '+=2000', pin: true, pinSpacing: true, scrub: true, anticipatePin: 1 } })
           .fromTo('.sky-info', { y: 0, autoAlpha: 1 }, { y: -350, autoAlpha: 0, ease: 'none', duration: 600 }, 0)
           .fromTo(w1, { x: x1, y: y1, scale: k }, { x: 0, y: 0, scale: 1, ease: 'none', duration: 600 }, 0)
           .fromTo(w2, { x: x2, y: y2, scale: k }, { x: 0, y: 0, scale: 1, ease: 'none', duration: 600 }, 0)
-          .to('.sky-bg', { y: '-10%', scale: 1.1, ease: 'none', duration: 1400 }, 200)
-          .fromTo('.sky-reveal-in', { clipPath: 'circle(30% at 50% 150%)', scale: 1 }, { clipPath: 'circle(100% at 50% 50%)', scale: 1.15, ease: 'none', duration: 1400 }, 200)
-          .fromTo('.sky-reveal-ovr', { opacity: 0.5 }, { opacity: 0.12, ease: 'none', duration: 1400 }, 200)
-          .fromTo('.sky-top', { autoAlpha: 0 }, { autoAlpha: 1, ease: 'none', duration: 160 }, 800);
+          .to('.sky-bg', { y: '-10%', scale: 1.1, ease: 'none', duration: 1400 }, 600)
+          .fromTo('.sky-reveal-in', { clipPath: 'circle(30% at 50% 150%)', scale: 1 }, { clipPath: 'circle(100% at 50% 50%)', scale: 1.15, ease: 'none', duration: 1300 }, 900)
+          .fromTo('.sky-reveal-ovr', { opacity: 0.5 }, { opacity: 0.12, ease: 'none', duration: 1300 }, 900)
+          .fromTo('.sky-top', { autoAlpha: 0 }, { autoAlpha: 1, ease: 'none', duration: 200 }, 1500);
 
         gsap.to(scribble, { strokeDashoffset: 0, ease: 'power1.inOut', scrollTrigger: { trigger: '.sky-menu', start: 'top top', end: '+=800', scrub: true } });
         gsap.from('.sky-intro h2 span, .sky-intro p', { y: 60, opacity: 0, duration: 1.4, ease: 'power3.out', stagger: 0.12,
