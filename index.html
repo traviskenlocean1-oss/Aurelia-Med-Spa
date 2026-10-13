@@ -222,6 +222,75 @@
     .space-small{display:none}
   }
 
+  /* ── Philosophy: scroll-scrubbed word-by-word light-up (Altura's
+     per-word reveal, driven by scroll instead of a one-shot trigger) ── */
+  .manifesto{position:relative;height:260vh;background:rgb(241,233,230);color:rgb(39,39,39)}
+  .manifesto-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;padding:84px var(--gutter) 0}
+  .manifesto-inner{max-width:1400px;margin:0 auto;width:100%}
+  .manifesto-label{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:300;letter-spacing:.21px;margin-bottom:min(40px,4vh)}
+  .manifesto-label::before{content:"";width:40px;height:1px;background:rgb(39,39,39)}
+  .manifesto-text{font-weight:200;font-size:clamp(28px,min(4.4vw,6vh),84px);line-height:1.12;letter-spacing:-.01em;max-width:31ch}
+  .manifesto-text .w{display:inline-block;opacity:.12;will-change:opacity}
+  .manifesto-creds{display:flex;flex-wrap:wrap;margin-top:min(56px,5vh);border-top:.8px solid rgb(184,184,184);opacity:0}
+  .manifesto-creds li{list-style:none;flex:1 1 0;min-width:200px;padding:20px 24px 0 0;font-size:14px;font-weight:300;letter-spacing:.21px;line-height:21.98px}
+  .manifesto-creds li span{display:block;font-family:Manrope,sans-serif;font-size:12px;color:rgb(140,130,124);margin-bottom:6px}
+
+  /* ── Promise: giant quote, each word rises out of a blur in sequence ── */
+  .promise{position:relative;background:#1c1512;color:#fff;padding:220px var(--gutter) 200px;overflow:hidden}
+  .promise-inner{position:relative;max-width:1400px;margin:0 auto}
+  .promise-sun{position:absolute;right:-140px;top:-160px;width:620px;opacity:.07;pointer-events:none}
+  .promise-quote{font-weight:200;font-size:clamp(48px,7vw,134px);line-height:.98;letter-spacing:-.02em}
+  .promise-quote .w{display:inline-block;opacity:0;transform:translateY(.35em);filter:blur(14px);will-change:transform,opacity,filter}
+  .promise-quote .gold{color:#D9B77E}
+  .promise-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:80px;opacity:0;transform:translateY(20px)}
+  .promise-foot p{max-width:456px;font-size:14px;font-weight:300;line-height:21.98px;letter-spacing:.21px;color:rgb(184,184,184)}
+  .promise-sign{font-size:14px;font-weight:300;letter-spacing:.21px;white-space:nowrap}
+  .promise-sign::before{content:"";display:inline-block;width:40px;height:1px;background:#D9B77E;vertical-align:middle;margin-right:14px}
+
+  /* ── First visit: Marlow's frame-growth (the frame opens, the photo
+     never scales) over a ghosted AURELIA wordmark; done with clip-path
+     so it stays on the compositor ── */
+  .grow{position:relative;height:320vh;background:#1c1512;color:#fff}
+  .grow-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .grow-word{position:absolute;z-index:3;font-weight:200;font-size:clamp(70px,15.5vw,300px);letter-spacing:.12em;padding-left:.12em;color:rgba(255,255,255,.28);white-space:nowrap;pointer-events:none}
+  .grow-media{position:absolute;inset:0;z-index:2;clip-path:inset(31% 41% 31% 41%);will-change:clip-path}
+  .grow-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .grow-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(28,21,18,.82) 0%,rgba(28,21,18,.45) 45%,rgba(28,21,18,.05) 75%)}
+  .grow-content{position:absolute;z-index:4;left:var(--gutter);right:var(--gutter);top:50%;transform:translateY(-50%);max-width:1400px;margin:0 auto;opacity:0}
+  .grow-content h2{font-weight:200;font-size:109px;line-height:98.1px}
+  .grow-content h2 span{display:block;font-size:50px;line-height:66px}
+  .grow-steps{list-style:none;max-width:520px;margin-top:40px;border-top:.8px solid rgba(255,255,255,.35)}
+  .grow-steps li{display:grid;grid-template-columns:56px 1fr;padding:18px 0;border-bottom:.8px solid rgba(255,255,255,.35)}
+  .grow-steps b{font-family:Manrope,sans-serif;font-weight:400;font-size:13px;color:#D9B77E;padding-top:5px}
+  .grow-steps strong{display:block;font-weight:300;font-size:22px;line-height:30px}
+  .grow-steps em{display:block;font-style:normal;font-size:14px;font-weight:300;line-height:21.98px;letter-spacing:.21px;color:rgb(214,206,200);margin-top:4px}
+
+  @media (max-height:820px) and (min-width:768px){
+    .grow-content h2{font-size:72px;line-height:66px}
+    .grow-content h2 span{font-size:36px;line-height:44px}
+    .grow-steps{margin-top:20px}
+    .grow-steps li{padding:10px 0}
+    .grow-steps strong{font-size:18px;line-height:24px}
+    .grow-steps em{font-size:13px;line-height:19px}
+    .grow-content .btn-outline-light{margin-top:18px !important}
+  }
+  @media (max-width:1024px){
+    .grow-content h2{font-size:80px;line-height:72px}
+    .grow-content h2 span{font-size:40px;line-height:56px}
+  }
+  @media (max-width:767px){
+    .manifesto{height:220vh}
+    .manifesto-creds li{min-width:50%}
+    .promise{padding:140px var(--gutter)}
+    .promise-sun{width:360px;right:-120px;top:-80px}
+    .promise-foot{flex-direction:column;align-items:flex-start}
+    .grow-media{clip-path:inset(36% 14% 36% 14%)}
+    .grow-media::after{background:linear-gradient(0deg,rgba(28,21,18,.88) 0%,rgba(28,21,18,.55) 60%,rgba(28,21,18,.2))}
+    .grow-content h2{font-size:56px;line-height:52px}
+    .grow-content h2 span{font-size:30px;line-height:44px}
+    .grow-steps strong{font-size:18px;line-height:24px}
+  }
+
   /* ── Full-screen menu (measured from the reference at 1920×1080) ── */
   .menu{position:fixed;inset:0;z-index:40;display:grid;grid-template-columns:55.54% 1fr;background:rgb(241,233,230);clip-path:polygon(0% 0%,100% 0%,100% 0%,0% 0%);visibility:hidden}
   .menu-list-wrap{display:flex;align-items:center;min-height:100%;overflow-y:auto}
@@ -239,7 +308,7 @@
   .sub-menu li{margin-bottom:16px;padding-left:8px}
   .sub-menu li:first-child{margin-top:24px}
   .sub-menu a{font:200 18px/20px 'Poppins',sans-serif;color:rgb(51,55,61)}
-  /* Photos (Unsplash): menu - Dominique Rivas; about - WAm_HaI4W2E, a_T6h19JC6U; space - Mxy5gokl8mE, npE_I2GzpHY, w1an547rkxo. Treatments video: Pexels 7677253 */
+  /* Photos (Unsplash): menu - Dominique Rivas; about - WAm_HaI4W2E, a_T6h19JC6U; space - Mxy5gokl8mE, npE_I2GzpHY, w1an547rkxo; first visit - Pe9IXUuC6QU. Treatments video: Pexels 7677253 */
   .menu-side{background:url('assets/img/menu-facial.jpg') center 30%/cover no-repeat;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
 
   @media (max-width:1024px){
@@ -470,6 +539,48 @@
       </div>
     </div>
   </section>
+
+  <section class="manifesto" aria-labelledby="manifesto-label">
+    <div class="manifesto-pin">
+      <div class="manifesto-inner">
+        <p class="manifesto-label" id="manifesto-label">4. Our philosophy</p>
+        <p class="manifesto-text" data-words>The best results are the ones no one can quite name. You simply look rested, brighter, and more like yourself. Every plan starts by listening, is guided by medical expertise, and never rushes what your skin needs.</p>
+        <ul class="manifesto-creds">
+          <li><span>01</span>Medical director oversight on every treatment plan</li>
+          <li><span>02</span>Licensed nurse injectors and aestheticians</li>
+          <li><span>03</span>FDA-approved products and devices</li>
+          <li><span>04</span>Complimentary first consultation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="promise" aria-label="Our promise">
+    <div class="promise-inner">
+      <svg class="promise-sun" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="42" fill="none" stroke="#D9B77E" stroke-width="1.2"/><g stroke="#D9B77E" stroke-width="1.2"><line x1="100" y1="10" x2="100" y2="44"/><line x1="100" y1="156" x2="100" y2="190"/><line x1="10" y1="100" x2="44" y2="100"/><line x1="156" y1="100" x2="190" y2="100"/><line x1="36" y1="36" x2="60" y2="60"/><line x1="140" y1="140" x2="164" y2="164"/><line x1="164" y1="36" x2="140" y2="60"/><line x1="60" y1="140" x2="36" y2="164"/></g></svg>
+      <p class="promise-quote" data-words>Your first visit starts with a <span class="gold">conversation,</span> not a sales pitch.</p>
+      <div class="promise-foot">
+        <p>We assess your skin, talk through your goals and only recommend what will genuinely help, with honest timelines and transparent pricing before anything begins.</p>
+        <span class="promise-sign">The Aurelia promise</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="grow" id="first-visit" aria-labelledby="grow-title">
+    <div class="grow-pin">
+      <span class="grow-word" aria-hidden="true">AURELIA</span>
+      <div class="grow-media"><img src="assets/img/consult-facial.jpg" alt="Aesthetician applying a treatment mask during a facial" loading="lazy" width="2200" height="1467" /></div>
+      <div class="grow-content">
+        <h2 id="grow-title"><span>Your</span>first visit</h2>
+        <ol class="grow-steps">
+          <li><b>01</b><div><strong>Consultation &amp; skin analysis</strong><em>A one-on-one with a licensed provider to understand your goals, history and skin.</em></div></li>
+          <li><b>02</b><div><strong>A plan made for you</strong><em>Clear recommendations, realistic results and pricing up front. No pressure.</em></div></li>
+          <li><b>03</b><div><strong>Treatment &amp; aftercare</strong><em>Comfortable, precise treatment followed by a check-in to make sure you love the result.</em></div></li>
+        </ol>
+        <a href="#book" class="btn-outline-light" style="margin-top:32px">Book a consultation</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -619,6 +730,55 @@
     gsap.fromTo(img, { yPercent: 4 }, { yPercent: -4, ease: 'none',
       scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
+
+  /* Split [data-words] paragraphs into word spans (keeps inner spans
+     like .gold intact) */
+  function splitWords(el) {
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    el.textContent = '';
+    nodes.forEach(function (n) {
+      var cls = n.nodeType === 1 ? n.className : '';
+      (n.textContent).split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { el.appendChild(document.createTextNode(' ')); return; }
+        var w = document.createElement('span');
+        w.className = 'w' + (cls ? ' ' + cls : '');
+        w.textContent = part;
+        el.appendChild(w);
+      });
+    });
+    return el.querySelectorAll('.w');
+  }
+
+  /* Philosophy: words light up as you scroll through the pinned block */
+  (function () {
+    var words = splitWords(document.querySelector('.manifesto-text'));
+    if (reduce) { gsap.set(words, { opacity: 1 }); gsap.set('.manifesto-creds', { opacity: 1 }); return; }
+    gsap.timeline({ scrollTrigger: { trigger: '.manifesto', start: 'top top', end: 'bottom bottom', scrub: 1.2 } })
+      .to(words, { opacity: 1, ease: 'none', stagger: 0.08, duration: 0.4 })
+      .to('.manifesto-creds', { opacity: 1, duration: 0.6 }, '-=0.2');
+  })();
+
+  /* Promise: each word rises out of a blur, one after another */
+  (function () {
+    var words = splitWords(document.querySelector('.promise-quote'));
+    if (reduce) { gsap.set(words, { opacity: 1, y: 0, filter: 'none' }); gsap.set('.promise-foot', { opacity: 1, y: 0 }); return; }
+    gsap.timeline({ scrollTrigger: { trigger: '.promise-quote', start: 'top 75%', once: true } })
+      .to(words, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.3, ease: 'power3.out', stagger: 0.11 })
+      .to('.promise-foot', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.6');
+    gsap.to('.promise-sun', { rotation: 90, ease: 'none', scrollTrigger: { trigger: '.promise', start: 'top bottom', end: 'bottom top', scrub: true } });
+  })();
+
+  /* First visit: the frame opens to full-bleed, the ghost wordmark fades,
+     then the steps arrive (Marlow: 300vh pin, scrub 1.6) */
+  (function () {
+    var startInset = window.innerWidth < 768 ? 'inset(36% 14% 36% 14%)' : 'inset(31% 41% 31% 41%)';
+    if (reduce) { gsap.set('.grow-media', { clipPath: 'inset(0% 0% 0% 0%)' }); gsap.set('.grow-word', { opacity: 0 }); gsap.set('.grow-content', { opacity: 1 }); return; }
+    gsap.timeline({ scrollTrigger: { trigger: '.grow', start: 'top top', end: 'bottom bottom', scrub: 1.6 } })
+      .fromTo('.grow-media', { clipPath: startInset }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', duration: 0.75 }, 0)
+      .to('.grow-word', { opacity: 0, scale: 1.08, ease: 'none', duration: 0.6 }, 0)
+      .fromTo('.grow-content', { opacity: 0, y: 24 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.25 }, 0.78);
+  })();
 
   /* Blur-in titles / fade-in copy as they enter */
   gsap.utils.toArray('.blur-in').forEach(function (el) {
