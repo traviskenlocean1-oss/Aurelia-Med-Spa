@@ -122,7 +122,7 @@
   /* ── Treatments: pinned background, steps swap on scroll (measured from
      the reference: 5400px track = 5 x 100vh, steps change at 0.85/2.05/
      3.25 viewport heights, then a closing CTA block 796px tall) ── */
-  .treat{position:relative;background:#1c1512;color:#fff}
+  .treat{position:relative;background:#1c1512;color:#fff;overflow:clip}
   .treat-bg{position:sticky;top:0;height:100vh;height:100svh;margin-bottom:-100vh;margin-bottom:-100svh;overflow:hidden;z-index:0}
   .treat-bg video,.treat-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .treat-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,28,20,.66),rgba(40,28,20,.56) 50%,rgba(40,28,20,.7))}
@@ -180,6 +180,48 @@
     .treat-step h3{font-size:44px;line-height:46px}
   }
 
+  /* ── Space + Gift (measured from the reference at 1920 and 1512:
+     heading at 240, big framed photo starts at 747 from 50%+8px to the
+     right gutter (888:982), small photo 456x629 centred on it, bottom photo
+     fills the left half (896:949) 204px lower with copy centred in the
+     right half, 240px bottom padding) ── */
+  .space{background:rgb(241,233,230);color:rgb(39,39,39);padding:240px var(--gutter)}
+  .space-head{max-width:1400px;margin:0 auto}
+  .space-title{font-weight:200;font-size:109px;line-height:98.1px}
+  .space-title span{display:block;font-size:50px;line-height:66px}
+  .space-kicker{margin-top:16px;font-size:26px;font-weight:300;line-height:34.06px}
+  .space-cols{display:flex;gap:16px;margin-top:24px}
+  .space-cols p{width:338px;font-size:14px;font-weight:300;line-height:21.98px;letter-spacing:.21px}
+  .space-row1{position:relative;display:flex;align-items:center;margin-top:137px}
+  .space-small{position:absolute;left:calc(max(0px,(100% - 1400px) / 2) + 8px);width:456px;aspect-ratio:456/629}
+  .space-big{margin-left:calc(50% + 8px);width:calc(50% - 8px);aspect-ratio:888/982;overflow:hidden}
+  .space-big img{transform:scale(1.25);will-change:transform}
+  .space-small img,.space-big img,.space-bottom img{display:block;width:100%;height:100%;object-fit:cover}
+  .space-row2{display:flex;align-items:center;margin-top:204px}
+  .space-bottom{width:50%;aspect-ratio:896/949}
+  .space-gift{width:calc(50% - 8px);margin-left:8px;display:flex;justify-content:center}
+  .space-gift-inner{width:456px}
+  .space-gift p.space-text{margin-top:24px;font-size:14px;font-weight:300;line-height:21.98px;letter-spacing:.21px}
+
+  @media (max-width:1024px){
+    .space{padding:120px var(--gutter)}
+    .space-cols{flex-direction:column}
+    .space-cols p{width:auto;max-width:456px}
+    .space-row1{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .space-small{position:static;width:auto}
+    .space-big{margin:0;width:auto}
+    .space-row2{margin-top:60px;flex-direction:column;align-items:stretch;gap:40px}
+    .space-bottom,.space-gift{width:auto;margin:0}
+    .space-gift{justify-content:flex-start}
+    .space-gift-inner{width:auto;max-width:456px}
+  }
+  @media (max-width:767px){
+    .space-title{font-size:80px;line-height:72px}
+    .space-title span{font-size:40px;line-height:60px}
+    .space-row1{grid-template-columns:1fr}
+    .space-small{display:none}
+  }
+
   /* ── Full-screen menu (measured from the reference at 1920×1080) ── */
   .menu{position:fixed;inset:0;z-index:40;display:grid;grid-template-columns:55.54% 1fr;background:rgb(241,233,230);clip-path:polygon(0% 0%,100% 0%,100% 0%,0% 0%);visibility:hidden}
   .menu-list-wrap{display:flex;align-items:center;min-height:100%;overflow-y:auto}
@@ -197,7 +239,7 @@
   .sub-menu li{margin-bottom:16px;padding-left:8px}
   .sub-menu li:first-child{margin-top:24px}
   .sub-menu a{font:200 18px/20px 'Poppins',sans-serif;color:rgb(51,55,61)}
-  /* Photos (Unsplash): menu - Dominique Rivas; about - WAm_HaI4W2E, a_T6h19JC6U */
+  /* Photos (Unsplash): menu - Dominique Rivas; about - WAm_HaI4W2E, a_T6h19JC6U; space - Mxy5gokl8mE, npE_I2GzpHY, w1an547rkxo. Treatments video: Pexels 7677253 */
   .menu-side{background:url('assets/img/menu-facial.jpg') center 30%/cover no-repeat;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
 
   @media (max-width:1024px){
@@ -402,6 +444,32 @@
       </div>
     </div>
   </section>
+
+  <section class="space" id="space" aria-labelledby="space-title">
+    <div class="space-head">
+      <h2 class="space-title blur-in" id="space-title"><span>The</span>haven</h2>
+      <p class="space-kicker opacity-in">2. A private sanctuary in Miami</p>
+      <div class="space-cols opacity-in">
+        <p>Designed to give you a true escape in the middle of the city. In our private suites you can enjoy a full menu of personalized treatments, from injectables and advanced facials to body contouring and IV therapy, all planned around how you want to look and feel.</p>
+        <p>Every detail of Aurelia was chosen to slow you down: soft light, warm textures and quiet rooms. Our licensed team gives you the time and attention you deserve, so each visit feels like a pause from everything else.</p>
+      </div>
+    </div>
+    <div class="space-row1">
+      <figure class="space-small wipe"><img src="assets/img/space-serum.jpg" alt="Amber serum bottle in soft natural light" loading="lazy" width="456" height="629" /></figure>
+      <figure class="space-big wipe"><img src="assets/img/space-lounge.jpg" alt="Aurelia Med Spa treatment lounge" loading="lazy" width="888" height="982" /></figure>
+    </div>
+    <div class="space-row2" id="gift">
+      <figure class="space-bottom wipe"><img src="assets/img/space-ritual.jpg" alt="Client applying a hydrating facial serum" loading="lazy" width="896" height="949" /></figure>
+      <div class="space-gift">
+        <div class="space-gift-inner">
+          <h2 class="space-title blur-in"><span>The</span>detail</h2>
+          <p class="space-kicker opacity-in">3. Gift Aurelia</p>
+          <p class="space-text opacity-in">Looking for the perfect gift? Surprise someone special with an Aurelia gift card. Choose from facials, injectables, body treatments or a full glow day. Give the gift of time, beauty and calm.</p>
+          <a href="#gift" class="btn-outline opacity-in">Gift</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -543,6 +611,14 @@
       }
     });
   })();
+
+  /* Big framed photo drifts slowly inside its frame (reference: scale
+     1.25, ~90px of travel across the viewport) */
+  gsap.utils.toArray('.space-big img').forEach(function (img) {
+    if (reduce) return;
+    gsap.fromTo(img, { yPercent: 4 }, { yPercent: -4, ease: 'none',
+      scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
 
   /* Blur-in titles / fade-in copy as they enter */
   gsap.utils.toArray('.blur-in').forEach(function (el) {
