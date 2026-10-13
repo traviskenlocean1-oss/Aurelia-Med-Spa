@@ -15,9 +15,9 @@ window.AureliaCards = function (opt) {
     var from = t.opts.slice().sort(function (a, b) { return price(a[1]) - price(b[1]); })[0][1];
     return '<div class="cpt_cols" data-cat="' + t.cat + '" data-i="' + i + '" data-price="' + price(from) + '">' +
       '<div class="cpt_lnk"><div class="desc">' +
-        '<h3 class="h3">' + t.name[0] + '<span class="br">' + t.name[1] + '</span></h3>' +
+        '<h3 class="h3">' + t.name[0] + ' <span class="br">' + t.name[1] + '</span></h3>' +
         '<div class="bg" style="background-image:url(\'' + t.img + '\')"><div class="ovr_lr01"></div><div class="ovr_lr02"></div>' +
-          '<div class="bg_desc"><div class="h4">' + t.name[0] + '<span class="br">' + t.name[1] + '</span></div>' +
+          '<div class="bg_desc"><div class="h4">' + t.name[0] + ' <span class="br">' + t.name[1] + '</span></div>' +
           '<p class="txt">' + t.desc + '</p>' +
           '<div class="bg_itm_btm"><div class="r">' + opts + '</div></div>' +
           '<div class="dbl_btm"><div class="ba light"><span class="crc"></span><a href="' + opt.primary.href(t) + '">' + opt.primary.label + arrow + '</a></div>' +

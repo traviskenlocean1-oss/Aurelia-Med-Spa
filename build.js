@@ -73,6 +73,8 @@ ${meta.team ? '<script src="assets/js/team.js"></script>' : ''}
 </body>
 </html>
 `;
-  fs.writeFileSync(path.join(__dirname, meta.file), html);
+  // ln-space: a real space between stacked title lines so the text reads as words
+  const out = html.replace(/<\/span><span class="(ln|br|st)/g, '</span> <span class="$1');
+  fs.writeFileSync(path.join(__dirname, meta.file), out);
   console.log('built', meta.file);
 }

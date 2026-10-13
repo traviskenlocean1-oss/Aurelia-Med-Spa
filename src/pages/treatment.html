@@ -241,8 +241,8 @@
   var arrow = '<svg viewBox="0 0 19 15" fill="none" aria-hidden="true"><path d="M0 7.5h17M11 1l6.5 6.5L11 14" stroke="currentColor" stroke-width="1.2"/></svg>';
   document.querySelector('.related .cpt_rows').innerHTML = rel.slice(0, 3).map(function (x) {
     var f = x.opts.slice().sort(function (a, b) { return price(a[1]) - price(b[1]); })[0][1];
-    return '<div class="cpt_cols"><div class="cpt_lnk"><div class="desc"><h3 class="h3">' + x.name[0] + '<span class="br">' + x.name[1] + '</span></h3>' +
-      '<div class="bg" style="background-image:url(\'' + x.img + '\')"><div class="ovr_lr01"></div><div class="ovr_lr02"></div><div class="bg_desc"><div class="h4">' + x.name[0] + '<span class="br">' + x.name[1] + '</span></div><p class="txt">' + x.desc + '</p>' +
+    return '<div class="cpt_cols"><div class="cpt_lnk"><div class="desc"><h3 class="h3">' + x.name[0] + ' <span class="br">' + x.name[1] + '</span></h3>' +
+      '<div class="bg" style="background-image:url(\'' + x.img + '\')"><div class="ovr_lr01"></div><div class="ovr_lr02"></div><div class="bg_desc"><div class="h4">' + x.name[0] + ' <span class="br">' + x.name[1] + '</span></div><p class="txt">' + x.desc + '</p>' +
       '<div class="dbl_btm"><div class="ba light"><span class="crc"></span><a href="book.html?t=' + x.slug + '">Book now' + arrow + '</a></div><div class="ba"><span class="crc"></span><a href="treatment.html?t=' + x.slug + '">Read more' + arrow + '</a></div></div></div></div>' +
       '<div class="itm_btm"><span class="v">' + x.opts.length + (x.opts.length > 1 ? ' options' : ' option') + '</span><span class="p">from ' + f + '</span></div></div></div></div>';
   }).join('');
