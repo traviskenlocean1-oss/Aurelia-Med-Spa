@@ -327,7 +327,7 @@
   /* ── First visit:  /* ── First visit: Marlow's frame-growth (the frame opens, the photo
      never scales) over a ghosted AURELIA wordmark; done with clip-path
      so it stays on the compositor ── */
-  .grow{position:relative;height:320vh;background:#1c1512;color:#fff}
+  .grow{position:relative;height:420vh;background:#1c1512;color:#fff}
   .grow-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center}
   .grow-word{position:absolute;z-index:3;font-weight:200;font-size:clamp(70px,15.5vw,300px);letter-spacing:.12em;padding-left:.12em;color:rgba(255,255,255,.28);white-space:nowrap;pointer-events:none}
   .grow-media{position:absolute;inset:0;z-index:2;clip-path:inset(31% 41% 31% 41%);will-change:clip-path}
@@ -456,7 +456,7 @@
      arrive, the title set on an arc, and a looping slider where the
      centred provider grows from a small arch into a full portrait.
      Values are the reference's, 1920 base + its 1451-1600 overrides ── */
-  .team{position:relative;z-index:5;min-height:200vh;background:#faf7f5;padding-top:370px;overflow:hidden;color:rgb(39,39,39)}
+  .team{position:relative;z-index:5;margin-top:-100vh;min-height:200vh;background:#faf7f5;padding-top:370px;overflow:hidden;color:rgb(39,39,39)}
   .team-dome{position:absolute;top:370px;left:0;right:0;margin:0 auto;height:100%;min-height:100vh;background:rgb(241,233,230);border-radius:3000px 3000px 0 0;will-change:transform}
   .team-arc{position:absolute;top:582px;left:0;right:0;margin:0 auto;max-width:1360px;width:100%;transform-origin:50% 0;transform:translateY(165px) scale(.8)}
   .team-arc svg{display:block;width:100%;height:auto;overflow:visible}
@@ -1210,7 +1210,7 @@
   (function () {
     var startInset = window.innerWidth < 768 ? 'inset(36% 14% 36% 14%)' : 'inset(31% 41% 31% 41%)';
     if (reduce) { gsap.set('.grow-media', { clipPath: 'inset(0% 0% 0% 0%)' }); gsap.set('.grow-word', { opacity: 0 }); gsap.set('.grow-content', { opacity: 1 }); return; }
-    gsap.timeline({ scrollTrigger: { trigger: '.grow', start: 'top top', end: 'bottom bottom', scrub: 1.6 } })
+    gsap.timeline({ scrollTrigger: { trigger: '.grow', start: 'top top', end: function () { return '+=' + window.innerHeight * 2.2; }, scrub: 1.6 } })
       .fromTo('.grow-media', { clipPath: startInset }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', duration: 0.75 }, 0)
       .to('.grow-word', { opacity: 0, scale: 1.08, ease: 'none', duration: 0.6 }, 0)
       .fromTo('.grow-content', { opacity: 0, y: 24 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.25 }, 0.78);
