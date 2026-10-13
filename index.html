@@ -235,19 +235,95 @@
   .manifesto-creds li{list-style:none;flex:1 1 0;min-width:200px;padding:20px 24px 0 0;font-size:14px;font-weight:300;letter-spacing:.21px;line-height:21.98px}
   .manifesto-creds li span{display:block;font-family:Manrope,sans-serif;font-size:12px;color:rgb(140,130,124);margin-bottom:6px}
 
-  /* ── Promise: giant quote, each word rises out of a blur in sequence ── */
-  .promise{position:relative;background:#1c1512;color:#fff;padding:220px var(--gutter) 200px;overflow:hidden}
-  .promise-inner{position:relative;max-width:1400px;margin:0 auto}
-  .promise-sun{position:absolute;right:-140px;top:-160px;width:620px;opacity:.07;pointer-events:none}
-  .promise-quote{font-weight:200;font-size:clamp(48px,7vw,134px);line-height:.98;letter-spacing:-.02em}
-  .promise-quote .w{display:inline-block;opacity:0;transform:translateY(.35em);filter:blur(14px);will-change:transform,opacity,filter}
-  .promise-quote .gold{color:#D9B77E}
-  .promise-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:80px;opacity:0;transform:translateY(20px)}
-  .promise-foot p{max-width:456px;font-size:14px;font-weight:300;line-height:21.98px;letter-spacing:.21px;color:rgb(184,184,184)}
-  .promise-sign{font-size:14px;font-weight:300;letter-spacing:.21px;white-space:nowrap}
-  .promise-sign::before{content:"";display:inline-block;width:40px;height:1px;background:#D9B77E;vertical-align:middle;margin-right:14px}
+  /* ── Signature scene (mechanism cloned from 7sky.liqium.com, sampled at
+     1512x696): pinned dark scene for 1600px of scroll. 0-600px: the info
+     row lifts 350px and fades while the two giant words travel up from the
+     bottom edge and stack centred (font 274 -> 212 at 1512, done here as a
+     1.29 -> 1 scale). 200-1600px: a second photo opens as a circle from
+     below (circle 30% at 50% 150% -> 100% at 50% 50%) and scales 1 -> 1.15,
+     covering the first word; the second word stays on top. ~800px: the
+     overlay copy fades in. Then the scene lifts away to reveal the pinned
+     menu underneath, and the arches scroll up over it. ── */
+  .sky{position:relative;background:#dadbd5}
+  .sky-hero{position:relative;height:100vh;height:100svh;overflow:hidden;background:#0d0b09;z-index:2}
+  .sky-bg{position:absolute;inset:0;background:url('assets/img/sky-scene.jpg') 50% 0/cover no-repeat;transform-origin:50% 50%}
+  .sky-bg::after{content:"";position:absolute;inset:0;background:rgba(12,10,8,.55)}
+  .sky-leaf{position:absolute;left:0;top:0;width:min(770px,51vw);height:auto;pointer-events:none;opacity:.55;z-index:1}
+  .sky-info{position:absolute;left:30px;right:30px;top:64%;z-index:20;color:#fff;font-size:13px;line-height:22px;font-weight:300;text-transform:uppercase;letter-spacing:.03em}
+  .sky-info-row{display:flex;justify-content:space-between;padding-top:19px;border-top:1px solid rgba(255,255,255,.15)}
+  .sky-info-r{display:flex;justify-content:space-between;width:min(674px,45vw)}
+  .sky-reveal{position:absolute;inset:0;z-index:50;overflow:hidden;pointer-events:none}
+  .sky-reveal-in{position:absolute;inset:0;background:url('assets/img/sky-reveal.jpg') 50% 0/cover no-repeat;clip-path:circle(30% at 50% 150%);will-change:clip-path,transform}
+  .sky-reveal-ovr{position:absolute;inset:0;background:#000;opacity:.5}
+  .sky-word{position:absolute;left:0;right:0;display:flex;justify-content:center;color:#fff;font-weight:200;font-size:30.5vh;line-height:1;letter-spacing:-.035em;text-transform:uppercase;white-space:nowrap;transform-origin:50% 100%;will-change:transform}
+  .sky-w1{top:40.8vh;z-index:20}
+  .sky-w2{top:66.5vh;z-index:60}
+  .sky-word .ltr{display:inline-block}
+  .sky-top{position:absolute;left:0;right:0;top:0;bottom:0;z-index:70;pointer-events:none;opacity:0;color:#fff;text-align:center}
+  .sky-logo{position:absolute;left:0;right:0;top:calc(66.5vh - 112px)}
+  .sky-logo .s{position:relative;display:inline-block;font-size:13px;line-height:13px;font-weight:300;font-style:italic}
+  .sky-logo .s svg{position:absolute;top:-21px;left:-55px;width:120px;height:60px}
+  .sky-logo .h4{font-weight:200;font-size:62px;line-height:58px;margin:6px 0 -1px;letter-spacing:-.02em}
+  .sky-logo .l{font-size:13px;line-height:13px;text-transform:uppercase;letter-spacing:.08em}
+  .sky-under{position:absolute;left:0;right:0;top:calc(66.5vh + 30.5vh * .98)}
+  .sky-under p{font-size:13px;line-height:22px;text-transform:uppercase;letter-spacing:.03em}
+  .sky-btn{position:relative;display:inline-flex;align-items:center;gap:20px;margin-top:26px;padding:16px 46px 14px 44px;border:1px solid #fff;border-radius:20px;overflow:hidden;color:#fff;font-weight:200;font-size:25px;line-height:25px;text-transform:uppercase;pointer-events:auto;isolation:isolate}
+  .sky-btn .crc{position:absolute;left:0;top:0;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:#B8976A;transform:scale(0);z-index:-1;pointer-events:none}
+  .sky-btn svg{width:19px;height:15px}
 
-  /* ── First visit: Marlow's frame-growth (the frame opens, the photo
+  .sky-menu{position:relative;z-index:1;margin-top:-100vh;margin-top:-100svh}
+  .sky-intro{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#292929;background:#dadbd5}
+  .sky-intro h2{font-weight:200;font-size:min(131px,18.8vh);line-height:.88;letter-spacing:-.035em;text-transform:uppercase}
+  .sky-intro h2 span{display:block}
+  .sky-intro p{margin-top:29px;font-size:16px;line-height:28px;font-weight:300}
+  .sky-intro p .br{display:block}
+  .sky-intro .w{position:relative;display:inline-block}
+  .sky-intro .w svg{position:absolute;top:-4px;left:-8px;width:calc(100% + 16px);height:37px;overflow:visible}
+  .sky-trio{position:relative;z-index:2;margin-top:40vh;padding:180px 10px 120px;background:#dadbd5}
+  .sky-trio-row{display:flex;justify-content:space-between}
+  .sky-arch{width:calc(33.333% - 5px)}
+  .sky-arch a{position:relative;display:block;height:min(762px,92vh);border:1px solid #999998;border-radius:414px;overflow:hidden;color:#292929}
+  .sky-arch .bg{position:absolute;inset:0;background-position:50% 30%;background-size:cover;opacity:0;transform:scale(1.08);transition:opacity 1s ease,transform 1.2s cubic-bezier(.16,1,.3,1)}
+  .sky-arch .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(20,14,10,.55))}
+  .sky-arch .desc{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:92px;text-align:center}
+  .sky-arch .lf{position:absolute;top:28px;left:4%;width:min(330px,72%);height:auto;mix-blend-mode:multiply;transition:opacity .35s}
+  .sky-arch:nth-child(2) .lf{top:10px;left:auto;right:12%}
+  .sky-arch:nth-child(3) .lf{left:auto;right:6%}
+  .sky-arch h3{font-weight:200;font-size:clamp(40px,3.65vw,55px);line-height:1.09;letter-spacing:.01em;text-transform:uppercase;transition:color .35s}
+  .sky-arch h3 .amp{display:block;transition:color .35s}
+  .sky-arch:nth-child(1) .amp{color:#9a6a5f}
+  .sky-arch:nth-child(2) .amp{color:#596676}
+  .sky-arch:nth-child(3) .amp{color:#5a645a}
+  .sky-arch .chip{display:inline-block;margin-top:76px;padding:8px 13px;border-radius:50px;background:rgba(255,255,255,.4);font-size:13px;line-height:13px;letter-spacing:.05em;text-transform:uppercase;transition:background .35s,color .35s}
+  .sky-arch a:hover .bg,.sky-arch a:focus-visible .bg{opacity:1;transform:scale(1)}
+  .sky-arch a:hover .lf,.sky-arch a:focus-visible .lf{opacity:0}
+  .sky-arch a:hover h3,.sky-arch a:hover .amp,.sky-arch a:focus-visible h3,.sky-arch a:focus-visible .amp{color:#fff}
+  .sky-arch a:hover .chip,.sky-arch a:focus-visible .chip{background:rgba(255,255,255,0);color:#fff}
+
+  @media (max-width:767px){
+    .sky-hero{height:auto;min-height:100svh}
+    .sky-word{font-size:22vw}
+    .sky-w1{top:22vh}.sky-w2{top:38vh}
+    .sky-reveal-in{clip-path:none}
+    .sky-reveal-ovr{opacity:.25}
+    .sky-info{display:none}
+    .sky-top{opacity:1}
+    .sky-logo{top:calc(38vh - 112px)}
+    .sky-under{top:calc(38vh + 22vw)}
+    .sky-menu{margin-top:0}
+    .sky-intro{position:relative;height:auto;padding:120px 20px 40px}
+    .sky-intro h2{font-size:64px}
+    .sky-intro p .br{display:inline}
+    .sky-trio{margin-top:0;padding:40px 16px 80px}
+    .sky-trio-row{flex-direction:column;gap:16px}
+    .sky-arch{width:auto}
+    .sky-arch a{height:560px}
+    .sky-arch .bg{opacity:1;transform:none}
+    .sky-arch .lf{opacity:0}
+    .sky-arch h3,.sky-arch .amp,.sky-arch .chip{color:#fff !important}
+  }
+
+  /* ── First visit:  /* ── First visit: Marlow's frame-growth (the frame opens, the photo
      never scales) over a ghosted AURELIA wordmark; done with clip-path
      so it stays on the compositor ── */
   .grow{position:relative;height:320vh;background:#1c1512;color:#fff}
@@ -281,9 +357,6 @@
   @media (max-width:767px){
     .manifesto{height:220vh}
     .manifesto-creds li{min-width:50%}
-    .promise{padding:140px var(--gutter)}
-    .promise-sun{width:360px;right:-120px;top:-80px}
-    .promise-foot{flex-direction:column;align-items:flex-start}
     .grow-media{clip-path:inset(36% 14% 36% 14%)}
     .grow-media::after{background:linear-gradient(0deg,rgba(28,21,18,.88) 0%,rgba(28,21,18,.55) 60%,rgba(28,21,18,.2))}
     .grow-content h2{font-size:56px;line-height:52px}
@@ -308,7 +381,7 @@
   .sub-menu li{margin-bottom:16px;padding-left:8px}
   .sub-menu li:first-child{margin-top:24px}
   .sub-menu a{font:200 18px/20px 'Poppins',sans-serif;color:rgb(51,55,61)}
-  /* Photos (Unsplash): menu - Dominique Rivas; about - WAm_HaI4W2E, a_T6h19JC6U; space - Mxy5gokl8mE, npE_I2GzpHY, w1an547rkxo; first visit - Pe9IXUuC6QU. Treatments video: Pexels 7677253 */
+  /* Photos (Unsplash): menu - Dominique Rivas; about - WAm_HaI4W2E, a_T6h19JC6U; space - Mxy5gokl8mE, npE_I2GzpHY, w1an547rkxo; first visit - Pe9IXUuC6QU; signature scene - 9qYFu1NzpS8, KVIlNRoGwxk; arches - wsLalHyHflQ, BJ7i-96glwM, b2bXKspL5MY. Treatments video: Pexels 7677253 */
   .menu-side{background:url('assets/img/menu-facial.jpg') center 30%/cover no-repeat;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
 
   @media (max-width:1024px){
@@ -555,13 +628,42 @@
     </div>
   </section>
 
-  <section class="promise" aria-label="Our promise">
-    <div class="promise-inner">
-      <svg class="promise-sun" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="42" fill="none" stroke="#D9B77E" stroke-width="1.2"/><g stroke="#D9B77E" stroke-width="1.2"><line x1="100" y1="10" x2="100" y2="44"/><line x1="100" y1="156" x2="100" y2="190"/><line x1="10" y1="100" x2="44" y2="100"/><line x1="156" y1="100" x2="190" y2="100"/><line x1="36" y1="36" x2="60" y2="60"/><line x1="140" y1="140" x2="164" y2="164"/><line x1="164" y1="36" x2="140" y2="60"/><line x1="60" y1="140" x2="36" y2="164"/></g></svg>
-      <p class="promise-quote" data-words>Your first visit starts with a <span class="gold">conversation,</span> not a sales pitch.</p>
-      <div class="promise-foot">
-        <p>We assess your skin, talk through your goals and only recommend what will genuinely help, with honest timelines and transparent pricing before anything begins.</p>
-        <span class="promise-sign">The Aurelia promise</span>
+  <section class="sky" aria-labelledby="sky-menu-title">
+    <div class="sky-hero">
+      <div class="sky-bg" aria-hidden="true"></div>
+      <svg class="sky-leaf leaf-art" data-variant="0" viewBox="0 0 1003 879" aria-hidden="true"></svg>
+      <div class="sky-info" aria-hidden="true">
+        <div class="sky-info-row">
+          <p>Physician-led med spa<br>in the heart of Miami</p>
+          <div class="sky-info-r"><p>Monday-Saturday 9AM-7PM</p><p>Scroll to explore</p></div>
+        </div>
+      </div>
+      <div class="sky-word sky-w1" aria-hidden="true"><span class="ltr">A</span><span class="ltr">u</span><span class="ltr">r</span><span class="ltr">e</span><span class="ltr">l</span><span class="ltr">i</span><span class="ltr">a</span></div>
+      <div class="sky-reveal" aria-hidden="true"><div class="sky-reveal-in"><div class="sky-reveal-ovr"></div></div></div>
+      <div class="sky-word sky-w2" aria-hidden="true"><span class="ltr">S</span><span class="ltr">p</span><span class="ltr">a</span></div>
+      <div class="sky-top">
+        <div class="sky-logo">
+          <p class="s">The<svg viewBox="0 0 120 60" fill="none" aria-hidden="true"><path d="M30 8C55 4 92 6 108 18C124 31 98 50 70 54C42 58 10 50 4 34C-1 20 22 10 52 6" stroke="#D9B77E" stroke-width="1"/></svg></p>
+          <div class="h4">golden</div>
+          <p class="l">luxury</p>
+        </div>
+        <div class="sky-under">
+          <p>Medical-grade results<br>in a sanctuary made for slowing down</p>
+          <a href="#book" class="sky-btn"><span class="crc" aria-hidden="true"></span><span>Book now</span><svg viewBox="0 0 19 15" fill="none" aria-hidden="true"><path d="M0 7.5h17M11 1l6.5 6.5L11 14" stroke="#fff" stroke-width="1.2"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="sky-menu">
+      <div class="sky-intro">
+        <h2 id="sky-menu-title"><span>Aurelia spa</span><span>Menu</span></h2>
+        <p>Choose from our <span class="w">full range of<svg viewBox="0 0 140 45" preserveAspectRatio="none" fill="none" aria-hidden="true"><path class="sky-scribble" d="M32 7C46.5 5 85.5 4.5 115 13.5C154.8 25.6 136.9 39.9 116.5 42.5C89.5 46 49.7 43.3 23.5 34.5C-4.9 25 -14.5 6.5 43.5 1" stroke="#292929" stroke-width="1"/></svg></span> medical-grade treatments, from precise injectables <span class="br">and advanced facials to laser resurfacing, body contouring</span> and restorative IV therapy, all under medical supervision.</p>
+      </div>
+      <div class="sky-trio">
+        <div class="sky-trio-row">
+          <div class="sky-arch"><a href="#treatments"><span class="bg" style="background-image:url('assets/img/arch-fillers.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="1" viewBox="0 0 492 459" aria-hidden="true"></svg><h3>Botox <span class="amp">&amp;</span> Fillers</h3><span><span class="chip">4 treatments</span></span></span></a></div>
+          <div class="sky-arch"><a href="#treatments"><span class="bg" style="background-image:url('assets/img/arch-facials.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="2" viewBox="0 0 532 447" aria-hidden="true"></svg><h3>Facials <span class="amp">&amp;</span> Peels</h3><span><span class="chip">5 treatments</span></span></span></a></div>
+          <div class="sky-arch"><a href="#treatments"><span class="bg" style="background-image:url('assets/img/arch-laser.jpg')"></span><span class="desc"><svg class="lf leaf-art" data-variant="3" viewBox="0 0 490 459" aria-hidden="true"></svg><h3>Laser <span class="amp">&amp;</span> Body</h3><span><span class="chip">4 treatments</span></span></span></a></div>
+        </div>
       </div>
     </div>
   </section>
@@ -759,17 +861,95 @@
       .to('.manifesto-creds', { opacity: 1, duration: 0.6 }, '-=0.2');
   })();
 
-  /* Promise: each word rises out of a blur, one after another */
+  /* Line-art leaves (stroke-only botanical branches, drawn in code so
+     nothing is copied from the reference) */
   (function () {
-    var words = splitWords(document.querySelector('.promise-quote'));
-    if (reduce) { gsap.set(words, { opacity: 1, y: 0, filter: 'none' }); gsap.set('.promise-foot', { opacity: 1, y: 0 }); return; }
-    gsap.timeline({ scrollTrigger: { trigger: '.promise-quote', start: 'top 75%', once: true } })
-      .to(words, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.3, ease: 'power3.out', stagger: 0.11 })
-      .to('.promise-foot', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.6');
-    gsap.to('.promise-sun', { rotation: 90, ease: 'none', scrollTrigger: { trigger: '.promise', start: 'top bottom', end: 'bottom top', scrub: true } });
+    var NS = 'http://www.w3.org/2000/svg';
+    function leaf(x, y, ang, len, w) {
+      var c = Math.cos(ang), s = Math.sin(ang), px = -s, py = c;
+      var tx = x + c * len, ty = y + s * len;
+      var a1 = [x + c * len * .3 + px * w, y + s * len * .3 + py * w], a2 = [x + c * len * .75 + px * w * .8, y + s * len * .75 + py * w * .8];
+      var b1 = [x + c * len * .75 - px * w * .8, y + s * len * .75 - py * w * .8], b2 = [x + c * len * .3 - px * w, y + s * len * .3 - py * w];
+      return 'M' + x + ' ' + y + 'C' + a1 + ' ' + a2 + ' ' + tx + ' ' + ty + 'C' + b1 + ' ' + b2 + ' ' + x + ' ' + y +
+             'M' + x + ' ' + y + 'Q' + (x + c * len * .5 + px * w * .12) + ' ' + (y + s * len * .5 + py * w * .12) + ' ' + (tx - c * len * .08) + ' ' + (ty - s * len * .08);
+    }
+    var V = [
+      { stem: 'M-20 860C140 700 300 560 470 420C620 300 720 170 800 20', leaves: [[120,740,-2.2,190,62],[240,630,-.55,170,58],[330,560,-2.4,230,70],[470,430,-.7,210,64],[560,340,-2.1,240,74],[680,230,-.35,190,60],[760,90,-1.9,170,52]] },
+      { stem: 'M0 420C120 360 230 300 330 230C400 180 450 120 480 40', leaves: [[70,385,-2.5,150,48],[160,330,-.6,140,46],[250,280,-2.2,170,56],[330,230,-.45,150,50],[400,160,-2,160,52]] },
+      { stem: 'M20 260C140 230 260 200 370 150C440 118 490 80 520 30', leaves: [[90,240,-2.3,140,46],[200,215,-.5,150,48],[300,180,-2,160,52],[390,140,-.4,130,44],[470,80,-1.8,120,40]] },
+      { stem: 'M480 420C370 360 270 300 180 230C110 175 60 115 30 40', leaves: [[420,385,-.65,150,48],[330,330,-2.5,140,46],[240,280,-.95,170,56],[170,225,-2.7,150,50],[100,160,-1.15,160,52]] }
+    ];
+    document.querySelectorAll('.leaf-art').forEach(function (svg) {
+      var v = V[+svg.dataset.variant];
+      var p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', v.stem + v.leaves.map(function (l) { return leaf.apply(null, l); }).join(''));
+      p.setAttribute('fill', 'none');
+      p.setAttribute('stroke', svg.classList.contains('sky-leaf') ? 'rgba(220,214,200,.75)' : '#4a4440');
+      p.setAttribute('stroke-width', svg.classList.contains('sky-leaf') ? '1.2' : '1.4');
+      p.setAttribute('vector-effect', 'non-scaling-stroke');
+      svg.appendChild(p);
+    });
   })();
 
-  /* First visit: the frame opens to full-bleed, the ghost wordmark fades,
+  /* Signature scene timelines (desktop/tablet only; phones get the
+     settled end-state from CSS) */
+  (function () {
+    var hero = document.querySelector('.sky-hero');
+    var w1 = document.querySelector('.sky-w1'), w2 = document.querySelector('.sky-w2');
+    var btn = document.querySelector('.sky-btn'), crc = btn.querySelector('.crc');
+
+    /* Book-now hover: a filled circle bursts from the cursor (explode) and
+       shrinks back to where the cursor leaves (desplode), 0.75s */
+    function burst(e, on) {
+      var r = btn.getBoundingClientRect();
+      gsap.set(crc, { left: e.clientX - r.left, top: e.clientY - r.top });
+      gsap.to(crc, { scale: on ? 1 : 0, duration: 0.75, ease: on ? 'power2.out' : 'power2.inOut', overwrite: true });
+    }
+    btn.addEventListener('mouseenter', function (e) { burst(e, true); });
+    btn.addEventListener('mouseleave', function (e) { burst(e, false); });
+
+    var scribble = document.querySelector('.sky-scribble');
+    var len = scribble.getTotalLength();
+    gsap.set(scribble, { strokeDasharray: len, strokeDashoffset: len });
+
+    ScrollTrigger.matchMedia({
+      '(min-width: 768px)': function () {
+        /* where the two words sit before stacking: one line along the
+           bottom edge, 1.29x bigger, side by side */
+        var k = 274 / 212, gap = window.innerWidth * 0.03;
+        function textW(el){var l=el.querySelectorAll('.ltr');return l[l.length-1].getBoundingClientRect().right-l[0].getBoundingClientRect().left;}
+        var W1 = textW(w1), W2 = textW(w2);
+        var span = (W1 + W2) * k + gap;
+        var x1 = -span / 2 + (W1 * k) / 2, x2 = span / 2 - (W2 * k) / 2;
+        var bottomY = window.innerHeight * 0.84;
+        var y1 = bottomY - w1.offsetTop + (k - 1) * w1.offsetHeight, y2 = bottomY - w2.offsetTop + (k - 1) * w2.offsetHeight;
+
+        /* load-in (reference: letters flip up from rotationX 90, 0.05 stagger) */
+        gsap.set([w1, w2], { perspective: 200 });
+        gsap.from('.sky-word .ltr', { y: 20, x: 50, rotation: 30, rotationX: 90, opacity: 0, transformOrigin: '0% 100%', duration: 1.5, ease: 'power4.out', stagger: 0.05,
+          scrollTrigger: { trigger: hero, start: 'top 60%', once: true } });
+
+        /* one pinned 1600px track; positions below are in px of scroll,
+           matching the reference's separate triggers (0-600, 200-1600,
+           800-960) */
+        gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: '+=1600', pin: true, pinSpacing: true, scrub: true, anticipatePin: 1 } })
+          .fromTo('.sky-info', { y: 0, autoAlpha: 1 }, { y: -350, autoAlpha: 0, ease: 'none', duration: 600 }, 0)
+          .fromTo(w1, { x: x1, y: y1, scale: k }, { x: 0, y: 0, scale: 1, ease: 'none', duration: 600 }, 0)
+          .fromTo(w2, { x: x2, y: y2, scale: k }, { x: 0, y: 0, scale: 1, ease: 'none', duration: 600 }, 0)
+          .to('.sky-bg', { y: '-10%', scale: 1.1, ease: 'none', duration: 1400 }, 200)
+          .fromTo('.sky-reveal-in', { clipPath: 'circle(30% at 50% 150%)', scale: 1 }, { clipPath: 'circle(100% at 50% 50%)', scale: 1.15, ease: 'none', duration: 1400 }, 200)
+          .fromTo('.sky-reveal-ovr', { opacity: 0.5 }, { opacity: 0.12, ease: 'none', duration: 1400 }, 200)
+          .fromTo('.sky-top', { autoAlpha: 0 }, { autoAlpha: 1, ease: 'none', duration: 160 }, 800);
+
+        gsap.to(scribble, { strokeDashoffset: 0, ease: 'power1.inOut', scrollTrigger: { trigger: '.sky-menu', start: 'top top', end: '+=800', scrub: true } });
+        gsap.from('.sky-intro h2 span, .sky-intro p', { y: 60, opacity: 0, duration: 1.4, ease: 'power3.out', stagger: 0.12,
+          scrollTrigger: { trigger: '.sky-menu', start: 'top 30%', once: true } });
+      },
+      '(max-width: 767px)': function () { gsap.set(scribble, { strokeDashoffset: 0 }); gsap.set('.sky-top', { autoAlpha: 1 }); }
+    });
+  })();
+
+  /* First visit:  /* First visit: the frame opens to full-bleed, the ghost wordmark fades,
      then the steps arrive (Marlow: 300vh pin, scrub 1.6) */
   (function () {
     var startInset = window.innerWidth < 768 ? 'inset(36% 14% 36% 14%)' : 'inset(31% 41% 31% 41%)';
