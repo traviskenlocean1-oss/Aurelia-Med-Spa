@@ -640,9 +640,11 @@
   .drawer-h{font:200 44px/48px 'Poppins',sans-serif;margin-top:14px}
   .drawer-copy{font:300 15px/24px 'Poppins',sans-serif;color:rgba(39,39,39,.75);margin-top:16px}
   .drawer-list{list-style:none;margin-top:26px;border-top:.8px solid rgba(39,39,39,.2)}
-  .drawer-list a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:.8px solid rgba(39,39,39,.2);font:300 17px/22px 'Poppins',sans-serif;transition:color .3s,padding .3s}
+  .drawer-list a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:.8px solid rgba(39,39,39,.2);font:300 17px/22px 'Poppins',sans-serif;transition:color .3s}
+  .drawer-list a b{font-weight:inherit;transition:transform .3s cubic-bezier(.16,1,.3,1)}
   .drawer-list a span{font:400 13px/13px Manrope,sans-serif;color:rgba(39,39,39,.6);white-space:nowrap}
-  .drawer-list a:hover{color:#9a7b4f;padding-left:6px}
+  .drawer-list a:hover{color:#9a7b4f}
+  .drawer-list a:hover b{transform:translateX(6px)}
   .drawer-cta{display:inline-flex;align-items:center;height:48px;margin-top:28px;padding:0 26px;border-radius:1000px;background:rgb(39,39,39);color:rgb(241,233,230);font:300 14px/22px 'Poppins',sans-serif;letter-spacing:.21px;transition:background .3s}
   .drawer-cta:hover{background:#9a7b4f}
   .drawer-all{display:block;margin-top:18px;font:300 13px/13px 'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;text-decoration:underline;text-underline-offset:4px}
@@ -1414,7 +1416,7 @@
       drawer.querySelector('.drawer-num').textContent = nums[cat] + ' Treatments';
       drawer.querySelector('.drawer-h').textContent = c.name;
       drawer.querySelector('.drawer-copy').textContent = copy[cat];
-      drawer.querySelector('.drawer-list').innerHTML = items.map(function (t) { return '<li><a href="treatment.html?t=' + t.slug + '">' + t.full + '<span>from ' + price(t) + '</span></a></li>'; }).join('');
+      drawer.querySelector('.drawer-list').innerHTML = items.map(function (t) { return '<li><a href="treatment.html?t=' + t.slug + '"><b>' + t.full + '</b><span>from ' + price(t) + '</span></a></li>'; }).join('');
       drawer.querySelector('.drawer-cta').href = 'book.html?t=' + items[0].slug;
       drawer.querySelector('.drawer-all').href = 'treatments.html?c=' + cat;
       drawer.querySelector('.drawer-all').textContent = 'See all ' + c.name;
