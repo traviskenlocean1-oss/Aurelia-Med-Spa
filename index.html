@@ -1450,7 +1450,23 @@
   var video = document.querySelector('.hero-video');
   var poster = document.querySelector('.hero-poster');
   var src = window.innerWidth < 768 ? 'assets/video/hero-mobile.mp4' : 'assets/video/hero.mp4';
-  var target = 0, current = 0, ready = false;
+  var target = 0, current = 0, ready = false, shown = false, collapsed = false;
+
+  /* The poster only goes away once the video has really drawn a frame.
+     (It used to fade on a 600ms timer, which left a blank brown screen
+     on iPhones where the video never decodes, e.g. Low Power Mode.) */
+  var reveal = function () {
+    if (shown || collapsed || video.readyState < 2) return; shown = true;
+    gsap.to(poster, { opacity: 0, duration: 0.6, onComplete: function () { poster.style.display = 'none'; } });
+  };
+  /* If the video never gets going, drop the 300vh scrub runway so the
+     page doesn't sit on a still photo for three screens of scrolling. */
+  var collapse = function () {
+    if (shown || collapsed) return; collapsed = true;
+    document.querySelector('.hero').style.height = '100svh';
+    ScrollTrigger.refresh();
+  };
+  setTimeout(collapse, 4000);
 
   fetch(src).then(function (r) { return r.blob(); }).then(function (blob) {
     video.src = URL.createObjectURL(blob);
@@ -1458,13 +1474,15 @@
     var finish = function () {
       if (unlocked) return; unlocked = true;
       video.pause(); ready = true;
-      video.currentTime = target * (video.duration || 0);
-      gsap.to(poster, { opacity: 0, duration: 0.6, onComplete: function () { poster.style.display = 'none'; } });
+      if (video.duration) video.currentTime = target * video.duration;
+      reveal();
     };
-    video.addEventListener('playing', finish, { once: true });
+    video.addEventListener('playing', function () { finish(); reveal(); }, { once: true });
+    video.addEventListener('loadeddata', reveal);
+    video.addEventListener('seeked', reveal);
     video.play().catch(function () {});
     setTimeout(finish, 600);
-  }).catch(function () {});
+  }).catch(collapse);
 
   ScrollTrigger.create({
     trigger: '.hero', start: 'top top', end: 'bottom bottom',
